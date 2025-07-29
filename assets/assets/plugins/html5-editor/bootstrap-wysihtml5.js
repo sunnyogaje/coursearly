@@ -4,17 +4,42 @@
     var tpl = {
         "font-styles": function(locale, options) {
             var size = (options && options.size) ? ' btn-'+options.size : '';
-            return "<li class='dropdown'>" +
-              "<a class='btn dropdown-toggle" + size + "' data-toggle='dropdown' href='#'>" +
-              "<i class='fa fa-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<b class='caret'></b>" +
-              "</a>" +
-              "<ul class='dropdown-menu'>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='div'>" + locale.font_styles.normal + "</a></li>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1'>" + locale.font_styles.h1 + "</a></li>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2'>" + locale.font_styles.h2 + "</a></li>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h3'>" + locale.font_styles.h3 + "</a></li>" +
-              "</ul>" +
-            "</li>";
+            return `
+            <li class="dropdown">
+                <a class="btn dropdown-toggle ${size}" data-toggle="dropdown" href="#">
+                <i class="fa fa-font"></i>&nbsp;
+                <span class="current-font">${locale.font_styles.normal}</span>&nbsp;
+                <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                <li>
+                    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="div"
+                    style="font-size:14px; font-weight:normal; text-decoration:none; color:#333;">
+                    ${locale.font_styles.normal}
+                    </a>
+                </li>
+                <li>
+                    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1"
+                    style="font-size:28px; font-weight:bold; text-decoration:none; color:#333;">
+                    ${locale.font_styles.h1}
+                    </a>
+                </li>
+                <li>
+                    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2"
+                    style="font-size:22px; font-weight:bold; text-decoration:none; color:#333;">
+                    ${locale.font_styles.h2}
+                    </a>
+                </li>
+                <li>
+                    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3"
+                    style="font-size:18px; font-weight:bold; text-decoration:none; color:#333;">
+                    ${locale.font_styles.h3}
+                    </a>
+                </li>
+                </ul>
+            </li>
+            `;
+
         },
 
         "emphasis": function(locale, options) {
@@ -37,58 +62,6 @@
                 "<a class='btn" + size + "' data-wysihtml5-command='Outdent' title='" + locale.lists.outdent + "'><i class='fa fa-outdent'></i></a>" +
                 "<a class='btn" + size + "' data-wysihtml5-command='Indent' title='" + locale.lists.indent + "'><i class='fa fa-indent'></i></a>" +
               "</div>" +
-            "</li>";
-        },
-
-        "link": function(locale, options) {
-            var size = (options && options.size) ? ' btn-'+options.size : '';
-            return "<li>" +
-              "<div class='bootstrap-wysihtml5-insert-link-modal modal fade bs-example-modal-lg'>" +
-                "<div class='modal-dialog modal-lg'>" +
-					"<div class='modal-content'>" +
-				"<div class='modal-header'>" +
-                  "<a class='close' data-dismiss='modal'></a>" +
-                  "<h3>" + locale.link.insert + "</h3>" +
-                "</div>" +
-                "<div class='modal-body'>" +
-                  "<div class='form-group'>" +
-				  "<input value='http://' class='bootstrap-wysihtml5-insert-link-url form-control' type='text'>" +
-                "</div>" +
-				"</div>" +
-                "<div class='modal-footer'>" +
-                  "<a href='#' class='btn btn-inverse' data-dismiss='modal'>" + locale.link.cancel + "</a>" +
-                  "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.link.insert + "</a>" +
-                "</div>" +
-              "</div>" +
-			  "</div>" +
-              "</div>" +
-              "<a class='btn" + size + "' data-wysihtml5-command='createLink' title='" + locale.link.insert + "'><i class='fa fa-link'></i></a>" +
-            "</li>";
-        },
-
-        "image": function(locale, options) {
-            var size = (options && options.size) ? ' btn-'+options.size : '';
-            return "<li>" +
-              "<div class='bootstrap-wysihtml5-insert-image-modal modal fade bs-example-modal-lg'>" +
-                "<div class='modal-dialog modal-lg'>" +
-					"<div class='modal-content'>" +
-				"<div class='modal-header'>" +
-                  "<a class='close' data-dismiss='modal'></a>" +
-                  "<h3>" + locale.image.insert + "</h3>" +
-                "</div>" +
-                "<div class='modal-body'>" +
-                 "<div class='form-group'>" +
-				  "<input value='http://' class='bootstrap-wysihtml5-insert-image-url  m-wrap large form-control' type='text'>" +
-                "</div>" +
-				"</div>" +
-                "<div class='modal-footer'>" +
-                  "<a href='#' class='btn' data-dismiss='modal'>" + locale.image.cancel + "</a>" +
-                  "<a href='#' class='btn  green btn-primary' data-dismiss='modal'>" + locale.image.insert + "</a>" +
-                "</div>" +
-              "</div>" +
-			  "</div>" +
-              "</div>" +
-              "<a class='btn" + size + "' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "'><i class='fa fa-image '></i></a>" +
             "</li>";
         },
 
@@ -191,14 +164,6 @@
                     if(key === "html") {
                         this.initHtml(toolbar);
                     }
-
-                    if(key === "link") {
-                        this.initInsertLink(toolbar);
-                    }
-
-                    if(key === "image") {
-                        this.initInsertImage(toolbar);
-                    }
                 }
             }
 
@@ -232,104 +197,6 @@
             });
         },
 
-        initInsertImage: function(toolbar) {
-            var self = this;
-            var insertImageModal = toolbar.find('.bootstrap-wysihtml5-insert-image-modal');
-            var urlInput = insertImageModal.find('.bootstrap-wysihtml5-insert-image-url');
-            var insertButton = insertImageModal.find('a.btn-primary');
-            var initialValue = urlInput.val();
-
-            var insertImage = function() {
-                var url = urlInput.val();
-                urlInput.val(initialValue);
-                self.editor.currentView.element.focus();
-                self.editor.composer.commands.exec("insertImage", url);
-            };
-
-            urlInput.keypress(function(e) {
-                if(e.which == 13) {
-                    insertImage();
-                    insertImageModal.modal('hide');
-                }
-            });
-
-            insertButton.click(insertImage);
-
-            insertImageModal.on('shown', function() {
-                urlInput.focus();
-            });
-
-            insertImageModal.on('hide', function() {
-                self.editor.currentView.element.focus();
-            });
-
-            toolbar.find('a[data-wysihtml5-command=insertImage]').click(function() {
-                var activeButton = $(this).hasClass("wysihtml5-command-active");
-
-                if (!activeButton) {
-                    insertImageModal.modal('show');
-                    insertImageModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
-                        e.stopPropagation();
-                    });
-                    return false;
-                }
-                else {
-                    return true;
-                }
-            });
-        },
-
-        initInsertLink: function(toolbar) {
-            var self = this;
-            var insertLinkModal = toolbar.find('.bootstrap-wysihtml5-insert-link-modal');
-            var urlInput = insertLinkModal.find('.bootstrap-wysihtml5-insert-link-url');
-            var insertButton = insertLinkModal.find('a.btn-primary');
-            var initialValue = urlInput.val();
-
-            var insertLink = function() {
-                var url = urlInput.val();
-                urlInput.val(initialValue);
-                self.editor.currentView.element.focus();
-                self.editor.composer.commands.exec("createLink", {
-                    href: url,
-                    target: "_blank",
-                    rel: "nofollow"
-                });
-            };
-            var pressedEnter = false;
-
-            urlInput.keypress(function(e) {
-                if(e.which == 13) {
-                    insertLink();
-                    insertLinkModal.modal('hide');
-                }
-            });
-
-            insertButton.click(insertLink);
-
-            insertLinkModal.on('shown', function() {
-                urlInput.focus();
-            });
-
-            insertLinkModal.on('hide', function() {
-                self.editor.currentView.element.focus();
-            });
-
-            toolbar.find('a[data-wysihtml5-command=createLink]').click(function() {
-                var activeButton = $(this).hasClass("wysihtml5-command-active");
-
-                if (!activeButton) {
-                    insertLinkModal.appendTo('body').modal('show');
-                    insertLinkModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
-                        e.stopPropagation();
-                    });
-                    return false;
-                }
-                else {
-                    return true;
-                }
-            });
-        }
     };
 
     // these define our public api
@@ -377,8 +244,6 @@
         "emphasis": true,
         "lists": true,
         "html": false,
-        "link": true,
-        "image": true,
         events: {},
         parserRules: {
             classes: {
@@ -459,14 +324,6 @@
                 ordered: "Ordered list",
                 outdent: "Outdent",
                 indent: "Indent"
-            },
-            link: {
-                insert: "Insert link",
-                cancel: "Cancel"
-            },
-            image: {
-                insert: "Insert image",
-                cancel: "Cancel"
             },
             html: {
                 edit: "Edit HTML"

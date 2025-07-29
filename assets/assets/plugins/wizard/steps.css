@@ -77,9 +77,9 @@ File: css
 }
 
 .wizard-content .wizard>.steps>ul>li.current .step {
-    border-color: #009efb ;
+    border-color: #009f91 ;
     background-color: #fff;
-    color: #009efb 
+    color: #009f91 
 }
 
 .wizard-content .wizard>.steps>ul>li.disabled a,
@@ -96,8 +96,8 @@ File: css
 }
 
 .wizard-content .wizard>.steps>ul>li.done .step {
-    background-color: #009efb ;
-    border-color: #009efb ;
+    background-color: #009f91 ;
+    border-color: #009f91 ;
     color: #fff
 }
 
@@ -169,40 +169,46 @@ File: css
 }
 
 .wizard-content .wizard>.actions>ul>li>a {
-    background: #009efb ;
+    background: #009f91 ;
     color: #fff;
     display: block;
     padding: 7px 12px;
     border-radius: 4px;
-    border: 1px solid transparent
+    border: 1px solid transparent;
+    text-decoration: none;
 }
 
 .wizard-content .wizard>.actions>ul>li>a:focus,
 .wizard-content .wizard>.actions>ul>li>a:hover {
     -webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .05) inset;
-    box-shadow: 0 0 0 100px rgba(0, 0, 0, .05) inset
+    box-shadow: 0 0 0 100px rgba(0, 0, 0, .05) inset;
+    text-decoration: none;
 }
 
 .wizard-content .wizard>.actions>ul>li>a:active {
     -webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .1) inset;
-    box-shadow: 0 0 0 100px rgba(0, 0, 0, .1) inset
+    box-shadow: 0 0 0 100px rgba(0, 0, 0, .1) inset;
+    text-decoration: none;
 }
 
 .wizard-content .wizard>.actions>ul>li>a[href="#previous"] {
     background-color: #fff;
     color: #54667a;
-    border: 1px solid #d9d9d9
+    border: 1px solid #d9d9d9;
+    text-decoration: none;
 }
 
 .wizard-content .wizard>.actions>ul>li>a[href="#previous"]:focus,
 .wizard-content .wizard>.actions>ul>li>a[href="#previous"]:hover {
     -webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .02) inset;
-    box-shadow: 0 0 0 100px rgba(0, 0, 0, .02) inset
+    box-shadow: 0 0 0 100px rgba(0, 0, 0, .02) inset;
+    text-decoration: none;
 }
 
 .wizard-content .wizard>.actions>ul>li>a[href="#previous"]:active {
     -webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .04) inset;
-    box-shadow: 0 0 0 100px rgba(0, 0, 0, .04) inset
+    box-shadow: 0 0 0 100px rgba(0, 0, 0, .04) inset;
+    text-decoration: none;
 }
 
 .wizard-content .wizard>.actions>ul>li.disabled>a,
@@ -223,7 +229,7 @@ File: css
     top: 45px;
     width: 50%;
     height: 3px;
-    background-color: #009efb 
+    background-color: #009f91 
 }
 
 .wizard-content .wizard.wizard-circle>.steps>ul>li.current:after,
@@ -237,8 +243,9 @@ File: css
     height: 50px;
     line-height: 45px;
     border: 3px solid #F3F3F3;
-    font-size: 1.3rem;
-    border-radius: 50%
+    font-size: 1.1rem;
+    border-radius: 50%;
+    text-decoration: none;
 }
 
 .wizard-content .wizard.wizard-notification>.steps>ul>li:after,
@@ -246,18 +253,20 @@ File: css
     top: 39px;
     width: 50%;
     height: 2px;
-    background-color: #009efb 
+    background-color: #009f91 ;
+    text-decoration: none;
 }
 
 .wizard-content .wizard.wizard-notification>.steps>ul>li.current .step {
-    border: 2px solid #009efb ;
-    color: #009efb ;
-    line-height: 36px
+    border: 2px solid #009f91 ;
+    color: #009f91 ;
+    line-height: 36px;
+    text-decoration: none;
 }
 
 .wizard-content .wizard.wizard-notification>.steps>ul>li.current .step:after,
 .wizard-content .wizard.wizard-notification>.steps>ul>li.done .step:after {
-    border-top-color: #009efb 
+    border-top-color: #009f91 
 }
 
 .wizard-content .wizard.wizard-notification>.steps>ul>li.current:after,
@@ -276,7 +285,8 @@ File: css
     line-height: 40px;
     font-size: 1.3rem;
     border-radius: 15%;
-    background-color: #F3F3F3
+    background-color: #F3F3F3;
+    text-decoration: none;
 }
 
 .wizard-content .wizard.wizard-notification>.steps .step:after {
@@ -290,13 +300,15 @@ File: css
     margin-bottom: -8px;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
-    border-top: 8px solid #F3F3F3
+    border-top: 8px solid #F3F3F3;
+    text-decoration: none;
 }
 
 .wizard-content .wizard.vertical>.steps {
     display: inline;
     float: left;
-    width: 20%
+    width: 20%;
+    text-decoration: none;
 }
 
 .wizard-content .wizard.vertical>.steps>ul>li {
@@ -330,7 +342,7 @@ File: css
     }
     .wizard-content .wizard>.steps>ul>li:last-child:after {
         content: '';
-        background-color: #009efb 
+        background-color: #009f91 
     }
     .wizard-content .wizard.vertical>.steps {
         width: 15%
@@ -342,7 +354,7 @@ File: css
         width: 100%
     }
     .wizard-content .wizard>.steps>ul>li.current:after {
-        background-color: #009efb 
+        background-color: #009f91 
     }
      .wizard-content .wizard.vertical>.steps>ul>li {
         display: block;

@@ -21,7 +21,7 @@
 
 /* Theme Variables
  ------------------------------------------*/
-$border-color: #a9a9a9 !default;
+$border-color: #009f91 !default;
 $background-color: #f5f5f5 !default;
 
 /* Frame Mode Layout
@@ -31,7 +31,7 @@ $background-color: #f5f5f5 !default;
   position: relative;
 
   /* dropzone */
-  $dropzone-color: lightskyblue;
+  $dropzone-color: #02e0cd;
   $dropzone-active-color: darken($dropzone-color, 30);
   .note-dropzone {
     position: absolute;
@@ -234,7 +234,7 @@ $background-color: #f5f5f5 !default;
           font-size: 12px;
           margin: 2px 7px;
           text-align: center;
-          border-bottom: 1px solid #eee;
+          border-bottom: 1px solid #009f91;
         }
 
         .note-color-reset {
@@ -302,10 +302,10 @@ $background-color: #f5f5f5 !default;
         height: 20px;
         padding: 0;
         margin: 0;
-        border: 1px solid #fff;
+        border: 1px solid #009f91;
       }
       .note-color-btn:hover {
-        border: 1px solid #000;
+        border: 1px solid #009f91;
       }
     }
   }
@@ -331,7 +331,7 @@ $background-color: #f5f5f5 !default;
       line-height: 4; /* vertical-align */
       color: lightgray;
       text-align: center;
-      border: 4px dashed lightgray;
+      border: 4px dashed #009f91;
       margin-bottom: 10px;
     }
   }
@@ -343,7 +343,7 @@ $background-color: #f5f5f5 !default;
     @include opacity(.9);
     .modal-content {
       background: transparent;
-      border: 1px solid white;
+      border: 1px solid #009f91;
       @include box-shadow(none);
       border-radius: 5px;
     }
@@ -363,7 +363,7 @@ $background-color: #f5f5f5 !default;
       font-weight: bold;
       padding-bottom: 5px;
       margin-bottom: 10px;
-      border-bottom: white 1px solid;
+      border-bottom: #009f91 1px solid;
     }
 
     .modal-close {
@@ -412,7 +412,7 @@ $background-color: #f5f5f5 !default;
   .note-control-selection {
     position: absolute;
     display: none;
-    border: 1px solid black;
+    border: 1px solid #009f91;
     &>div { position: absolute; }
 
     .note-control-selection-bg {
@@ -425,7 +425,7 @@ $background-color: #f5f5f5 !default;
     .note-control-handle {
       width: 7px;
       height: 7px;
-      border: 1px solid black;
+      border: 1px solid #009f91;
     }
 
     .note-control-holder {
