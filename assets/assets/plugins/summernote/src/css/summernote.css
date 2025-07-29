@@ -9,7 +9,7 @@
 /* Frame Mode Layout
  ------------------------------------------*/
 .note-editor {
-  border: 1px solid #a9a9a9;
+  border: 1px solid #009f91;
   position: relative;
   overflow: hidden;
   /* dropzone */
@@ -30,7 +30,7 @@
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
 }
 .note-editor .note-dropzone.hover {
@@ -111,7 +111,7 @@
 .note-editor .note-statusbar .note-resizebar .note-icon-bar {
   width: 20px;
   margin: 1px auto;
-  border-top: 1px solid #a9a9a9;
+  border-top: 1px solid #009f91;
 }
 /* Air Mode Layout
 ------------------------------------------*/
@@ -222,7 +222,7 @@
   font-size: 12px;
   margin: 2px 7px;
   text-align: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #009f91;
 }
 .note-popover .popover .popover-content .note-color .dropdown-menu .btn-group .note-color-reset,
 .panel-heading.note-toolbar .note-color .dropdown-menu .btn-group .note-color-reset {
@@ -300,7 +300,7 @@
 }
 .note-popover .popover .popover-content .note-color-palette div .note-color-btn:hover,
 .panel-heading.note-toolbar .note-color-palette div .note-color-btn:hover {
-  border: 1px solid #000;
+  border: 1px solid #009f91;
 }
 /* Dialog
 ------------------------------------------*/
@@ -319,12 +319,12 @@
 }
 .note-dialog .note-image-dialog .note-dropzone {
   min-height: 100px;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 4;
   /* vertical-align */
   color: lightgray;
   text-align: center;
-  border: 4px dashed lightgray;
+  border: 4px dashed #009f91;
   margin-bottom: 10px;
 }
 .note-dialog .note-help-dialog {
@@ -343,7 +343,7 @@
 }
 .note-dialog .note-help-dialog .modal-content {
   background: transparent;
-  border: 1px solid white;
+  border: 1px solid #009f91;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -361,7 +361,7 @@
   font-weight: bold;
   padding-bottom: 5px;
   margin-bottom: 10px;
-  border-bottom: white 1px solid;
+  border-bottom: #009f91 1px solid;
 }
 .note-dialog .note-help-dialog .modal-close {
   font-size: 14px;
@@ -401,7 +401,7 @@
 .note-handle .note-control-selection {
   position: absolute;
   display: none;
-  border: 1px solid black;
+  border: 1px solid #009f91;
 }
 .note-handle .note-control-selection > div {
   position: absolute;
@@ -420,7 +420,7 @@
 .note-handle .note-control-selection .note-control-handle {
   width: 7px;
   height: 7px;
-  border: 1px solid black;
+  border: 1px solid #009f91;
 }
 .note-handle .note-control-selection .note-control-holder {
   width: 7px;
@@ -430,7 +430,7 @@
 .note-handle .note-control-selection .note-control-sizing {
   width: 7px;
   height: 7px;
-  border: 1px solid black;
+  border: 1px solid #009f91;
   background-color: white;
 }
 .note-handle .note-control-selection .note-control-nw {

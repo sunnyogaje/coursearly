@@ -1,36 +1,68 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ZXX">
     <head>
+        <!-- Meta Basics -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <meta name="thumbnail" content="assets/images/Victor-page-thumbnail.png" />
-        <meta name="description" content="Victor - Online Education Courses HTML5 Template" />
-        <meta name="keywords" content="Online Education Courses HTML5 Template" />
-        <meta name="author" content="BizanTheme" />
 
-        <title>Victor - Online Education Courses HTML5 Template</title>
-        <link rel="shortcut icon" href="../assets/images/favicon.svg" />
+        <!-- SEO Meta -->
+        <title>{{COURSE_TITLE}} | Coursearly - Learn Online</title>
+        <meta name="description" content="{{COURSE_DESCRIPTION}}" />
+        <meta name="keywords" content="{{COURSE_KEYWORDS}}, online courses, Coursearly, e-learning, learn {{COURSE_TITLE}}" />
+        <meta name="author" content="Coursearly Team" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
 
-        <!-- Bootstrap -->
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://coursearly.com/courses/{{COURSE_SLUG}}" />
+
+        <!-- Open Graph (Facebook, LinkedIn) -->
+        <meta property="og:title" content="{{COURSE_TITLE}} | Coursearly" />
+        <meta property="og:description" content="{{COURSE_DESCRIPTION}}" />
+        <meta property="og:image" content="https://coursearly.com/assets/images/courses/{{COURSE_IMAGE}}" />
+        <meta property="og:url" content="https://coursearly.com/courses/{{COURSE_SLUG}}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Coursearly" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="{{COURSE_TITLE}} | Coursearly" />
+        <meta name="twitter:description" content="{{COURSE_DESCRIPTION}}" />
+        <meta name="twitter:image" content="https://coursearly.com/assets/images/courses/{{COURSE_IMAGE}}" />
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+
+        <!-- Structured Data (JSON-LD) -->
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "{{COURSE_TITLE}}",
+        "description": "{{COURSE_DESCRIPTION}}",
+        "provider": {
+            "@type": "Organization",
+            "name": "Coursearly",
+            "sameAs": "https://coursearly.com"
+        },
+        "url": "https://coursearly.com/courses/{{COURSE_SLUG}}",
+        "image": "https://coursearly.com/assets/images/courses/{{COURSE_IMAGE}}"
+        }
+        </script>
+
+        <!-- CSS Files -->
         <link rel="stylesheet" href="../assets/plugins/css/bootstrap.min.css" />
-        <!-- Animate CSS -->
         <link rel="stylesheet" href="../assets/plugins/css/animate.min.css" />
-        <!-- Owl Carousel CSS -->
         <link rel="stylesheet" href="../assets/plugins/css/owl.carousel.min.css" />
-        <!-- Swiper Slider CSS -->
         <link rel="stylesheet" href="../assets/plugins/css/swiper-bundle.min.css" />
-        <!-- Maginific Popup CSS -->
         <link rel="stylesheet" href="../assets/plugins/css/maginific-popup.min.css" />
-        <!-- Nice Select CSS -->
         <link rel="stylesheet" href="../assets/plugins/css/nice-select.min.css" />
-        <!-- Icofont -->
         <link rel="stylesheet" href="../assets/plugins/css/icofont.css" />
-        <!-- Uicons -->
         <link rel="stylesheet" href="../assets/plugins/css/uicons.css" />
-        <!-- Main CSS -->
         <link rel="stylesheet" href="../style.css" />
     </head>
+
 
     <body class="element-wrapper">
         <!-- Start Preloader  -->
@@ -172,7 +204,7 @@
                                                 </div>
                                                 <div class="ed-contact__info-content">
                                                     <span>Send Message</span>
-                                                    <a href="mailto:Victor@gmail.com">Victor@gmail.com3</a>
+                                                    <a href="mailto:Coursearly@gmail.com">Coursearly@gmail.com3</a>
                                                 </div>
                                             </div>
 
@@ -482,7 +514,7 @@
                         </div>
                         <div class="ed-contact__info-content">
                             <span>Send Message</span>
-                            <a href="mailto:Victor@gmail.com">Victor@gmail.com3</a>
+                            <a href="mailto:Coursearly@gmail.com">Coursearly@gmail.com3</a>
                         </div>
                     </div>
 
