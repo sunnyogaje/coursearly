@@ -46,8 +46,6 @@
 
     <script src="https://cdn.jsdelivr.net/gh/noumanqamar450/alertbox@main/version/1.0.2/alertbox.min.js"></script>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
     <style>
         .instructor-card {
             background: #fff;
@@ -153,7 +151,7 @@
             margin-top: 10px;
             }
         }
-        </style>
+    </style>
 </head>
 
 <body>
@@ -236,89 +234,70 @@
                 </div>
 
                 <div class="row g-4">
-                    <!-- Card 1 -->
-                    <div class="col-md-6 m-b-15">
-                        <div class="instructor-card">
-                            <div class="row g-0">
-                                <div class="col-md-5">
-                                    <img src="../../assets/assets/images/users/5.jpg" class="img-fluid h-100 w-100" style="object-fit: cover;" alt="Java Course">
+                    <div class="col-md-6 col-lg-4 m-b-15">
+                        <div style="border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-family: Arial, sans-serif;">
+
+                            <!-- Top Image with Category Tag + Wishlist -->
+                            <div style="position: relative;">
+                                <img src="../../assets/assets/images/users/5.jpg" alt="Course Image" style="width: 100%; display: block; object-fit: cover; height: 180px;">
+                                
+                                <!-- Category -->
+                                <span style="position: absolute; top: 12px; left: 12px; background: #009f91; color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+                                    Data Science
+                                </span>
+
+                                <!-- Review Status -->
+                                <span style="position: absolute; top: 12px; left: 120px; background: #ffc107; color: #000; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+                                    <i class="fa fa-hourglass-half"></i> Pending Review
+                                </span>
+
+                                <!-- Wishlist Heart -->
+                                <button class="wishlistBtn" style="color:#009f91;background-color:transparent;outline: none;position: absolute; top: 12px; right: 12px; background: white; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s;border:none;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#d32f2f">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Course Info -->
+                            <div style="padding: 15px;">
+                                
+                                <!-- Meta Info -->
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; color: #777; margin-bottom: 20px;">
+                                    <span><i class="fa fa-book"></i> 23 Lessons</span>
+                                    <span data-bs-toggle="modal" data-bs-target="#coursedetail" style="cursor:pointer;"><i class="fa fa-user"></i> Harrison Stone</span>
                                 </div>
-                                <div class="col-md-7">
-                                    <div class="card-body d-flex flex-column h-100">
-                                        <div class="mb-2">
-                                            <div class="course-title">Java Tutorial for Beginners</div>
-                                            <div class="course-updated">Last updated: Mar 2023</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <span class="course-status status-draft"><i class="fas fa-pen-to-square me-1"></i> Draft</span>
-                                        </div>
-                                        <div class="action-buttons mt-auto">
-                                            <button class="btn-edit m-b-10"><i class="fas fa-edit me-1"></i>Edit</button>
-                                            <button class="btn-delete m-b-10"><i class="fas fa-trash-alt me-1"></i>Delete</button>
-                                            <button class="btn-request m-b-10"><i class="fas fa-paper-plane me-1"></i>Request Review</button>
-                                            <button class="btn-publish m-b-10"><i class="fas fa-upload me-1"></i>Publish</button>
-                                        </div>
-                                    </div>
+
+                                <!-- Title -->
+                                <h5 style="margin: 0 0 20px 0; font-size: 15px; font-weight: bold; color: #222; line-height: 1.4; cursor: pointer;" onmouseover="this.style.color='#009f91'" onmouseout="this.style.color='#222'" data-bs-toggle="modal" data-bs-target="#coursedetail">
+                                    Data Competitive Strategy Law and Organization Course
+                                </h5>
+
+                                <!-- Rating -->
+                                <div data-bs-toggle="modal" data-bs-target="#coursedetail" style="cursor:pointer;display: flex; align-items: center; font-size: 13px; margin-bottom: 20px; color: #f1c40f;">
+                                    <span>⭐⭐⭐⭐⭐</span>
+                                    <span style="color: #888; margin-left: 6px;">(09 Reviews)</span>
+                                </div>
+
+                                <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+
+                                <!-- Footer -->
+                                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; margin-bottom: 10px;">
+                                    <span style="font-weight: bold; color: #009f91; font-size: 16px;">$674.00</span>
+                                    <span style="color: #555;"><i class="fas fa-user-graduate"></i> 673 Students</span>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px;">
+                                    <span style="padding:5px;border: 1px solid #dc3545; color: #dc3545; background: none; font-size: 12px; border-radius: 4px;"><i class="fa fa-trash"></i> Delete</span>
+                                    <span style="padding:5px;border: 1px solid #ffc107; color: #ffc107; background: none; font-size: 12px; border-radius: 4px;"><i class="fa fa-edit"></i> Edit</span>
+                                    <span style="padding:5px;border: 1px solid #28a745; color: #28a745; background: none; font-size: 12px; border-radius: 4px;"><i class="fa fa-upload"></i> Publish</span>
+                                    <span style="padding:5px;border: 1px solid #009f91; color: #009f91; background: none; font-size: 12px; border-radius: 4px;"><i class="fa fa-paper-plane"></i> Request Review</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 2 -->
-                    <div class="col-md-6 m-b-15">
-                        <div class="instructor-card">
-                            <div class="row g-0">
-                                <div class="col-md-5">
-                                    <img src="../../assets/assets/images/users/5.jpg" class="img-fluid h-100 w-100" style="object-fit: cover;" alt="React Course">
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="card-body d-flex flex-column h-100">
-                                        <div class="mb-2">
-                                            <div class="course-title">React Bootcamp Fullstack</div>
-                                            <div class="course-updated">Last updated: Jul 2024</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <span class="course-status status-review"><i class="fas fa-clock me-1"></i> Pending Review</span>
-                                        </div>
-                                        <div class="action-buttons mt-auto">
-                                            <button class="btn-edit m-b-10"><i class="fas fa-edit me-1"></i>Edit</button>
-                                            <button class="btn-delete m-b-10"><i class="fas fa-trash-alt me-1"></i>Delete</button>
-                                            <button class="btn-request m-b-10"><i class="fas fa-paper-plane me-1"></i>Request Review</button>
-                                            <button class="btn-publish m-b-10"><i class="fas fa-upload me-1"></i>Publish</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="col-md-6 m-b-15">
-                        <div class="instructor-card">
-                            <div class="row g-0">
-                                <div class="col-md-5">
-                                    <img src="../../assets/assets/images/users/5.jpg" class="img-fluid h-100 w-100" style="object-fit: cover;" alt="React Course">
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="card-body d-flex flex-column h-100">
-                                        <div class="mb-2">
-                                            <div class="course-title">React Bootcamp Fullstack</div>
-                                            <div class="course-updated">Last updated: Jul 2024</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <span class="course-status status-published"><i class="fas fa-clock me-1"></i> Published</span>
-                                        </div>
-                                        <div class="action-buttons mt-auto">
-                                            <button class="btn-edit m-b-10"><i class="fas fa-edit me-1"></i>Edit</button>
-                                            <button class="btn-delete m-b-10"><i class="fas fa-trash-alt me-1"></i>Delete</button>
-                                            <button class="btn-request m-b-10"><i class="fas fa-paper-plane me-1"></i>Request Review</button>
-                                            <button class="btn-publish m-b-10"><i class="fas fa-upload me-1"></i>Publish</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -562,7 +541,7 @@
                                                                             placeholder="Describe what this module covers..."
                                                                             style="font-size: 0.85rem; border:1px solid #009f91;"></textarea>
                                                                     </div>
-
+                                                                    <hr>
                                                                     <!-- Video Upload or Link -->
                                                                     <div class="mb-4">
                                                                         <label class="fw-medium">Upload Video or Provide Link</label>
@@ -579,7 +558,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
+                                                                    <hr>
                                                                     <!-- Text Resource -->
                                                                     <div class="mb-4">
                                                                         <label class="fw-medium">Text Resource</label>
@@ -602,7 +581,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
+                                                                    <hr>
                                                                     <!-- Quiz Section -->
                                                                     <div id="quizSection"></div>
 
@@ -700,7 +679,6 @@
     <script src="../../assets/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 
     <script src="../../assets/assets/plugins/notify/wnoty.js"></script>
-
     
     <script>
         $(document).ready(function () {
