@@ -223,11 +223,12 @@
                                     <option>Z-A</option>
                                     <option>Published</option>
                                     <option>Unpublished</option>
+                                    <option>Pending Review</option>
                                 </select>
 
                             </div>
                             <div class="col-lg-7 col-md-12 m-b-15 justify-content-end d-flex">
-                                <button type="button" class="btn waves-effect waves-light btn-sm p-10" data-toggle="modal" data-target="#createcourse1" style="background-color:#009f91;color:#ffffff;font-size:13px;outline: none; box-shadow: none;">Create course</button>
+                                <button type="button" class="btn waves-effect waves-light btn-sm p-10 courseModal" data-toggle="modal" data-target="#createcourse1" data-id="Create Course" style="background-color:#009f91;color:#ffffff;font-size:13px;outline: none; box-shadow: none;">Create Course</button>
                             </div>
                         </div>
                     </div>
@@ -289,10 +290,10 @@
 
                                 <!-- Action Buttons -->
                                 <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px;">
-                                    <span style="padding:5px;border: 1px solid #dc3545; color: #dc3545; background: none; font-size: 12px; border-radius: 4px;"><i class="fa fa-trash"></i> Delete</span>
-                                    <span style="padding:5px;border: 1px solid #ffc107; color: #ffc107; background: none; font-size: 12px; border-radius: 4px;"><i class="fa fa-edit"></i> Edit</span>
-                                    <span style="padding:5px;border: 1px solid #28a745; color: #28a745; background: none; font-size: 12px; border-radius: 4px;"><i class="fa fa-upload"></i> Publish</span>
-                                    <span style="padding:5px;border: 1px solid #009f91; color: #009f91; background: none; font-size: 12px; border-radius: 4px;"><i class="fa fa-paper-plane"></i> Request Review</span>
+                                    <span style="padding:5px;border: 1px solid #dc3545; color: #dc3545; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;" id="sa-warning"><i class="fa fa-trash"></i> Delete</span>
+                                    <span style="padding:5px;border: 1px solid #ffc107; color: #ffc107; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;" class="courseModal" data-toggle="modal" data-target="#createcourse1" data-id="Edit Course"><i class="fa fa-edit"></i> Edit</span>
+                                    <span style="padding:5px;border: 1px solid #28a745; color: #28a745; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;"><i class="fa fa-upload"></i> Publish</span>
+                                    <span style="padding:5px;border: 1px solid #009f91; color: #009f91; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;"><i class="fa fa-paper-plane"></i> Request Review</span>
                                 </div>
                             </div>
                         </div>
@@ -316,7 +317,7 @@
 
                             <!-- Title Center -->
                             <div style="flex: 1; text-align: center;">
-                                <h2 class="fw-bold mb-0" style="color: #009f91; font-weight: 500;">Create Course</h2>
+                                <h2 class="fw-bold mb-0" style="color: #009f91; font-weight: 500;" id="modalTitle">Create Course</h2>
                             </div>
 
                             <!-- Close Button Right -->
@@ -663,6 +664,10 @@
     <script src="../../assets/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <script src="../../assets/js/custom.min.js"></script>
 
+    <!-- Sweet-Alert  -->
+    <script src="../../assets/assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../assets/assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+
     <script src="../../assets/assets/plugins/toast-master/js/jquery.toast.js"></script>
     <script src="../../assets/js/toastr.js"></script>
 
@@ -988,6 +993,15 @@
 
             });
 
+        });
+    </script>
+
+    <script>
+        $('body').on('click', '.courseModal', function(){
+
+            var modalTitle = $(this).data('id');
+
+            $('#modalTitle').text(modalTitle);
         });
     </script>
 </body>

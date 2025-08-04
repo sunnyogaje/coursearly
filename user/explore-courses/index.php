@@ -674,9 +674,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-lg-12 mb-3 d-flex justify-content-end">
-                                                    <button type="button"class="btn btn-sm" style="border: 1px solid #009f91; color: #009f91; border-radius: 20px; font-weight: 500;outline: none; box-shadow: none;">
+                                                    <a href="./" type="button"class="btn btn-sm" style="border: 1px solid #009f91; color: #009f91; border-radius: 20px; font-weight: 500;outline: none; box-shadow: none;">
                                                         View More Courses
-                                                    </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

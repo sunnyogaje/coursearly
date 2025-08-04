@@ -26,14 +26,14 @@
     $('#sa-warning').click(function(){
         swal({   
             title: "Are you sure?",   
-            text: "You will not be able to recover this imaginary file!",   
+            text: "This action is not reversable.",   
             type: "warning",   
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   
             confirmButtonText: "Yes, delete it!",   
             closeOnConfirm: false 
         }, function(){   
-            swal("Deleted!", "Your imaginary file has been deleted.", "success"); 
+            swal("Deleted!", "Deleted Successfully.", "success"); 
         });
     });
 
@@ -41,7 +41,7 @@
     $('#sa-params').click(function(){
         swal({   
             title: "Are you sure?",   
-            text: "You will not be able to recover this imaginary file!",   
+            text: "This action is not reversable.",   
             type: "warning",   
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   
@@ -51,9 +51,9 @@
             closeOnCancel: false 
         }, function(isConfirm){   
             if (isConfirm) {     
-                swal("Deleted!", "Your imaginary file has been deleted.", "success");   
+                swal("Deleted!", "This action is not reversable.", "success");   
             } else {     
-                swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                swal("Cancelled", "Process cancelled :)", "error");   
             } 
         });
     });
