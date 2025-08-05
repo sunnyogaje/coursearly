@@ -151,7 +151,158 @@
             margin-top: 10px;
             }
         }
+        .video-wrapper {
+            position: relative;
+            max-width: 1100px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background: black;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Block YouTube clicks */
+        #clickBlocker {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 2;
+        }
+
+        /* Gradient overlay for controls */
+        .controls-overlay {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            z-index: 3;
+        }
+
+        /* Video title */
+        .video-info h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #ccc;
+            font-weight:500;
+        }
+        .video-info small {
+            color: #ccc;
+        }
+
+        /* Buttons */
+        .control-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .control-buttons span {
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Progress bar container */
+        .progress-container {
+            position: relative;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        /* Progress fill */
+        .progress {
+            height: 100%;
+            background: #009f91;
+            width: 0%;
+            border-radius: 4px;
+        }
+
+        /* Timer display */
+        .timer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .controls-overlay {
+            opacity: 1;
+            transition: opacity 0.4s ease; /* fade in/out */
+            pointer-events: auto; /* can still click when visible */
+        }
+
+        .controls-overlay.hidden {
+            opacity: 0;
+            pointer-events: none; /* ignore clicks when hidden */
+        }
+
+        /* Hide scrollbar */
+        .reviews-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        .reviews-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari */
+        }
+
+        /* Smooth snap scrolling */
+        .reviews-scroll {
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+        }
+        .reviews-scroll > .card {
+            scroll-snap-align: start;
+        }
+
+        /* Avatar initials */
+        .avatar-initials {
+            width: 40px;
+            height: 40px;
+            background-color: #009f91;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Arrow buttons */
+        .arrow-btn {
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            width: 35px;
+            height: 35px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .arrow-btn:hover {
+            background: #f5f5f5;
+        }
     </style>
+
 </head>
 
 <body>
@@ -292,8 +443,8 @@
                                 <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px;">
                                     <span style="padding:5px;border: 1px solid #dc3545; color: #dc3545; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;" id="sa-warning"><i class="fa fa-trash"></i> Delete</span>
                                     <span style="padding:5px;border: 1px solid #ffc107; color: #ffc107; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;" class="courseModal" data-toggle="modal" data-target="#createcourse1" data-id="Edit Course"><i class="fa fa-edit"></i> Edit</span>
-                                    <span style="padding:5px;border: 1px solid #28a745; color: #28a745; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;"><i class="fa fa-upload"></i> Publish</span>
-                                    <span style="padding:5px;border: 1px solid #009f91; color: #009f91; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;"><i class="fa fa-paper-plane"></i> Request Review</span>
+                                    <span style="padding:5px;border: 1px solid #28a745; color: #28a745; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;" class="publishCourse"><i class="fa fa-upload"></i> Publish</span>
+                                    <span style="padding:5px;border: 1px solid #009f91; color: #009f91; background: none; font-size: 12px; border-radius: 4px;cursor:pointer;" class="requestCourseReview"><i class="fa fa-paper-plane"></i> Request Review</span>
                                 </div>
                             </div>
                         </div>
@@ -623,6 +774,157 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="coursedetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="coursedetailLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="coursedetailLabel">Course Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container py-3">
+                                <div class="row g-4 align-items-start">
+                                    
+                                    <div class="col-lg-7">
+                                        <div class="video-wrapper">
+                                            <!-- YouTube Player -->
+                                            <div id="player"></div>
+
+                                            <!-- Click Blocker -->
+                                            <div id="clickBlocker"></div>
+
+                                            <!-- Custom Controls -->
+                                            <div class="controls-overlay">
+                                                <div class="video-info">
+                                                    <h3>Learn Ethical Hacking From Scratch</h3>
+                                                    <small>IT & Software > Network & Security > Ethical Hacking</small>
+                                                </div>
+
+                                                <!-- Progress Bar -->
+                                                <div class="progress-container" id="progressContainer">
+                                                    <div class="progress" id="progressBar"></div>
+                                                </div>
+
+                                                <!-- Timer -->
+                                                <div class="timer" id="timeDisplay">0:00 / 0:00</div>
+
+                                                <div class="control-buttons">
+                                                    <span onclick="rewindVideo()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                            <path d="M22 28V21L20 22.3125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M25 27.5627C25.3134 27.8373 25.7029 28 26.125 28C27.1605 28 28 27.0206 28 25.8125C28 24.6044 27.1605 23.625 26.125 23.625C25.7029 23.625 25.3134 23.7877 25 24.0623L25.375 21H28" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M15.8161 15.8041C10.9691 20.1977 10.7039 27.579 15.2238 32.2905C19.7437 37.0021 27.337 37.2599 32.1839 32.8663C37.0309 28.4726 37.2961 21.0914 32.7762 16.3798C30.2053 13.6999 26.64 12.4609 23.1514 12.6992M24.8571 10L21.8008 12.8329L24.8571 15.871" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </span>
+                                                    <span onclick="togglePlay()" id="playBtn">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M34.99 23.7773C34.9219 22.8388 34.4205 21.9278 33.4859 21.394L19.4878 13.3994C17.4878 12.2571 15 13.7013 15 16.0044V31.9937C15 34.2968 17.4878 35.741 19.4878 34.5988L33.4859 26.6041C34.4205 26.0703 34.9219 25.1593 34.99 24.2208C35.0226 24.0751 35.0226 23.9231 34.99 23.7773Z" fill="white"/>
+                                                        </svg>
+                                                    </span>
+                                                    <span onclick="forwardVideo()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                                            <path d="M22 28V21L20 22.3125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M25 27.5627C25.3134 27.8373 25.7029 28 26.125 28C27.1605 28 28 27.0206 28 25.8125C28 24.6044 27.1605 23.625 26.125 23.625C25.7029 23.625 25.3134 23.7877 25 24.0623L25.375 21H28" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M32.1839 15.8041C37.0309 20.1977 37.2961 27.579 32.7762 32.2905C28.2563 37.0021 20.663 37.2599 15.8161 32.8663C10.9691 28.4726 10.7039 21.0914 15.2238 16.3798C17.7947 13.6999 21.36 12.4609 24.8486 12.6992M23.1429 10L26.1992 12.8329L23.1429 15.871" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Course Info Section -->
+                                    <div class="col-lg-5 d-flex flex-column justify-content-between">
+                                    
+                                        <div>
+                                            <small class="text-muted" style="font-size:12px;">IT & Software > Network & Security > Ethical Hacking</small>
+                                            <h3 class="fw-bold mt-2">Learn Ethical Hacking From Scratch</h3>
+                                            <p class="text-secondary small">
+                                                Become an ethical hacker that can hack like black hat hackers and secure systems like cybersecurity experts.
+                                            </p>
+                                            <p class="mb-2" style="font-size:14px;">
+                                                <strong class="text-warning"> ★ 4.6 </strong> (132,725 ratings) · 654,813 students
+                                            </p>
+                                            <small class="text-muted" style="font-size:14px;">Created by <span id="creatorName" style="cursor: pointer;color:#009f91;">John Doe</span></small>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <p class="fw-bold fs-5 mb-1">
+                                                <span class="text-dark">₦12,900</span>
+                                            </p>
+                                            
+                                        </div>
+
+                                        <div class="row mt-3" style="font-size:12px;">
+                                            <h5 class="mb-3" style="font-weight:500;color:#000000;">This course includes:</h5>
+                                            <div class="col-md-6">
+                                                <p class="mb-2">
+                                                    <i class="mdi mdi-play-circle"></i> 15 Hours on-demand video
+                                                </p>
+                                                <p class="mb-2">
+                                                    <i class="mdi mdi-file-document"></i> 2 Articles
+                                                </p>
+                                            </div>
+
+                                            <!-- Second Column -->
+                                            <div class="col-md-6">
+                                                <p class="mb-2">
+                                                    <i class="mdi mdi-file-import"></i> 21 Downloadable resources
+                                                </p>
+                                                <p class="mb-2">
+                                                    <i class="mdi mdi-certificate"></i> Certificate of completion
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    
+                                    <!-- First Column -->
+                                    <div class="col-md-12 col-lg-7">
+                                        
+                                        <div class="row align-items-start p-3" style="font-size:14px;">
+
+                                            <h5 class="mb-3 mt-4" style="font-weight:500;color:#000000;">Course Content</h5>
+                                            <div class="col-md-12">
+                                                <div id="modulesAccordion">
+                                                    <a class="btn btn-secondary btn-sm mb-2" data-bs-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                                                        Module 1 Name
+                                                    </a>
+                                                    <div id="collapseExample1" class="collapse card card-body" data-bs-parent="#modulesAccordion" style="font-size:13px;">
+                                                        M1 Description
+                                                    </div>
+                                                    <br>
+                                                    <a class="btn btn-secondary btn-sm mb-2" data-bs-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                                        Module 2 Name
+                                                    </a>
+                                                    <div id="collapseExample2" class="collapse card card-body" data-bs-parent="#modulesAccordion" style="font-size:13px;">
+                                                        M2 Description
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <h5 class="mb-3 mt-4" style="font-weight:500;color:#000000;">Course Description</h5>
+                                            <div class="col-md-12" id="instructorSection">
+                                                <p><small><strong>Last Update:</strong> June 2024</small></p>
+                                                <small>Entire Course Description</small>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" style="background-color:#009f91;color:#ffffff;" data-bs-dismiss="modal">Close</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -697,6 +999,7 @@
     </script>
     <!-- jQuery file upload -->
     <script src="../../assets/assets/plugins/dropify/dist/js/dropify.min.js"></script>
+
     <script>
         $(document).ready(function() {
             // Basic
@@ -986,11 +1289,8 @@
         });
         $('body').on('click', '[href="#finish"]', function () {
             $.wnoty({
-
-                // 'success', 'info', 'error', 'warning'
                 type: 'success',
                 message: 'submit'
-
             });
 
         });
@@ -1003,7 +1303,172 @@
 
             $('#modalTitle').text(modalTitle);
         });
+        $('body').on('click', '.publishCourse', function(){
+            $.wnoty({
+                type: 'success',
+                message: 'Published Successfully'
+            });
+        });
+        $('body').on('click', '.requestCourseReview', function(){
+            $.wnoty({
+                type: 'success',
+                message: 'Review Request Sent Successfully'
+            });
+        });
     </script>
+
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        let player;
+        let isDragging = false;
+        let hideControlsTimeout;
+
+        function loadYouTubePlayer() {
+            if (window.YT && window.YT.Player) {
+                initYouTubePlayer(); // Already loaded
+            } else {
+                let tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                document.head.appendChild(tag);
+                window.onYouTubeIframeAPIReady = initYouTubePlayer;
+            }
+        }
+
+        function initYouTubePlayer() {
+            player = new YT.Player('player', {
+                videoId: 'ED0v9YuVpiE',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    modestbranding: 1,
+                    rel: 0,
+                    disablekb: 1
+                },
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady() {
+            updateProgress();
+        }
+
+        function togglePlay() {
+            const state = player.getPlayerState();
+            const btn = document.getElementById('playBtn');
+
+            if (state === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+                btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M34.99 23.7773C34.9219 22.8388 34.4205 21.9278 33.4859 21.394L19.4878 13.3994C17.4878 12.2571 15 13.7013 15 16.0044V31.9937C15 34.2968 17.4878 35.741 19.4878 34.5988L33.4859 26.6041C34.4205 26.0703 34.9219 25.1593 34.99 24.2208C35.0226 24.0751 35.0226 23.9231 34.99 23.7773Z" fill="white"/>
+                </svg>`;
+                showControls();
+            } else {
+                player.playVideo();
+                btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <path d="M26.2857 15.1111C26.2857 14.4975 26.7974 14 27.4286 14H30.8571C31.4883 14 32 14.4975 32 15.1111V32.8889C32 33.5025 31.4883 34 30.8571 34H27.4286C26.7974 34 26.2857 33.5025 26.2857 32.8889V15.1111Z" fill="white"/>
+                    <path d="M16 15.1111C16 14.4975 16.5117 14 17.1429 14H20.5714C21.2026 14 21.7143 14.4975 21.7143 15.1111V32.8889C21.7143 33.5025 21.2026 34 20.5714 34H17.1429C16.5117 34 16 33.5025 16 32.8889V15.1111Z" fill="white"/>
+                </svg>`;
+                startHideControlsTimer();
+            }
+        }
+
+        function rewindVideo() {
+            player.seekTo(player.getCurrentTime() - 15, true);
+            showControls();
+        }
+
+        function forwardVideo() {
+            player.seekTo(player.getCurrentTime() + 15, true);
+            showControls();
+        }
+
+        function updateProgress() {
+            if (player && player.getDuration) {
+                const duration = player.getDuration();
+                const currentTime = player.getCurrentTime();
+                const percent = (currentTime / duration) * 100;
+
+                document.getElementById('progressBar').style.width = percent + "%";
+                document.getElementById('timeDisplay').textContent =
+                    formatTime(currentTime) + " / " + formatTime(duration);
+            }
+            if (!isDragging) requestAnimationFrame(updateProgress);
+        }
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ":" + (secs < 10 ? "0" + secs : secs);
+        }
+
+        function seekVideo(e) {
+            const progressContainer = document.getElementById('progressContainer');
+            const rect = progressContainer.getBoundingClientRect();
+            const percent = Math.min(Math.max(0, (e.clientX - rect.left) / rect.width), 1);
+            const newTime = percent * player.getDuration();
+            player.seekTo(newTime, true);
+        }
+
+        const progressContainer = document.getElementById('progressContainer');
+        progressContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            seekVideo(e);
+        });
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) seekVideo(e);
+        });
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                updateProgress();
+            }
+        });
+
+        function onPlayerStateChange(event) {
+            updateProgress();
+            if (event.data === YT.PlayerState.PLAYING) {
+                startHideControlsTimer();
+            } else {
+                showControls();
+            }
+        }
+
+        // Fade hide/show logic
+        function startHideControlsTimer() {
+            clearTimeout(hideControlsTimeout);
+            hideControlsTimeout = setTimeout(() => {
+                document.querySelector('.controls-overlay').classList.add("hidden");
+            }, 5000);
+        }
+
+        function showControls() {
+            clearTimeout(hideControlsTimeout);
+            document.querySelector('.controls-overlay').classList.remove("hidden");
+        }
+
+        // Show controls on hover
+        document.querySelector('.video-wrapper').addEventListener('mouseenter', showControls);
+        document.querySelector('.video-wrapper').addEventListener('mouseleave', () => {
+            if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+                startHideControlsTimer();
+            }
+        });
+
+        document.querySelector('.video-wrapper').addEventListener('click', function(e) {
+            if (!e.target.closest('.control-buttons') && !e.target.closest('#progressContainer')) {
+                togglePlay();
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", loadYouTubePlayer);
+    </script>
+
 </body>
 
 </html>
