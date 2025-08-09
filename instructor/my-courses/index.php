@@ -436,7 +436,7 @@
                                 <!-- Footer -->
                                 <div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; margin-bottom: 10px;">
                                     <span style="font-weight: bold; color: #009f91; font-size: 16px;">$674.00</span>
-                                    <span style="color: #555;"><i class="fas fa-user-graduate"></i> 673 Students</span>
+                                    <span style="color: #555;"><i class="fa fa-group"></i> 673 Students</span>
                                 </div>
 
                                 <!-- Action Buttons -->
