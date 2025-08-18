@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ZXX">
-    <head>
-        <!-- Meta Basics -->
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-        <!-- SEO Meta -->
-        <title>{{COURSE_TITLE}} | Coursearly - Learn Online</title>
-        <meta name="description" content="{{COURSE_DESCRIPTION}}" />
-        <meta name="keywords" content="{{COURSE_KEYWORDS}}, online courses, Coursearly, e-learning, learn {{COURSE_TITLE}}" />
-        <meta name="author" content="Coursearly Team" />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="googlebot" content="index, follow" />
+<head>
+    <!-- Meta Basics -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-        <!-- Canonical URL -->
-        <link rel="canonical" href="https://coursearly.com/courses/{{COURSE_SLUG}}" />
+    <!-- SEO Meta -->
+    <title>{{COURSE_TITLE}} | Coursearly - Learn Online</title>
+    <meta name="description" content="{{COURSE_DESCRIPTION}}" />
+    <meta name="keywords"
+        content="{{COURSE_KEYWORDS}}, online courses, Coursearly, e-learning, learn {{COURSE_TITLE}}" />
+    <meta name="author" content="Coursearly Team" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
 
-        <!-- Open Graph (Facebook, LinkedIn) -->
-        <meta property="og:title" content="{{COURSE_TITLE}} | Coursearly" />
-        <meta property="og:description" content="{{COURSE_DESCRIPTION}}" />
-        <meta property="og:image" content="https://coursearly.com/assets/images/courses/{{COURSE_IMAGE}}" />
-        <meta property="og:url" content="https://coursearly.com/courses/{{COURSE_SLUG}}" />
-        <meta property="og:type" content="article" />
-        <meta property="og:site_name" content="Coursearly" />
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://coursearly.com/courses/{{COURSE_SLUG}}" />
 
-        <!-- Twitter Card -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="{{COURSE_TITLE}} | Coursearly" />
-        <meta name="twitter:description" content="{{COURSE_DESCRIPTION}}" />
-        <meta name="twitter:image" content="https://coursearly.com/assets/images/courses/{{COURSE_IMAGE}}" />
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:title" content="{{COURSE_TITLE}} | Coursearly" />
+    <meta property="og:description" content="{{COURSE_DESCRIPTION}}" />
+    <meta property="og:image" content="https://coursearly.com/assets/images/courses/{{COURSE_IMAGE}}" />
+    <meta property="og:url" content="https://coursearly.com/courses/{{COURSE_SLUG}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Coursearly" />
 
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{COURSE_TITLE}} | Coursearly" />
+    <meta name="twitter:description" content="{{COURSE_DESCRIPTION}}" />
+    <meta name="twitter:image" content="https://coursearly.com/assets/images/courses/{{COURSE_IMAGE}}" />
 
-        <!-- Structured Data (JSON-LD) -->
-        <script type="application/ld+json">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
         {
         "@context": "https://schema.org",
         "@type": "Course",
@@ -51,561 +53,953 @@
         }
         </script>
 
-        <!-- CSS Files -->
-        <link rel="stylesheet" href="../assets/plugins/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="../assets/plugins/css/animate.min.css" />
-        <link rel="stylesheet" href="../assets/plugins/css/owl.carousel.min.css" />
-        <link rel="stylesheet" href="../assets/plugins/css/swiper-bundle.min.css" />
-        <link rel="stylesheet" href="../assets/plugins/css/maginific-popup.min.css" />
-        <link rel="stylesheet" href="../assets/plugins/css/nice-select.min.css" />
-        <link rel="stylesheet" href="../assets/plugins/css/icofont.css" />
-        <link rel="stylesheet" href="../assets/plugins/css/uicons.css" />
-        <link rel="stylesheet" href="../style.css" />
-    </head>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/plugins/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/plugins/css/animate.min.css" />
+    <link rel="stylesheet" href="../assets/plugins/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../assets/plugins/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../assets/plugins/css/maginific-popup.min.css" />
+    <link rel="stylesheet" href="../assets/plugins/css/nice-select.min.css" />
+    <link rel="stylesheet" href="../assets/plugins/css/icofont.css" />
+    <link rel="stylesheet" href="../assets/plugins/css/uicons.css" />
+    <link rel="stylesheet" href="../style.css" />
+
+    <style>
+        .video-wrapper {
+            position: relative;
+            max-width: 1100px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background: black;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Block YouTube clicks */
+        #clickBlocker {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 2;
+        }
+
+        /* Gradient overlay for controls */
+        .controls-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            z-index: 3;
+        }
+
+        /* Video title */
+        .video-info h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        .video-info small {
+            color: #ccc;
+        }
+
+        /* Buttons */
+        .control-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .control-buttons span {
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Progress bar container */
+        .progress-container {
+            position: relative;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        /* Progress fill */
+        .progress {
+            height: 100%;
+            background: #009f91;
+            width: 0%;
+            border-radius: 4px;
+        }
+
+        /* Timer display */
+        .timer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .controls-overlay {
+            opacity: 1;
+            transition: opacity 0.4s ease;
+            /* fade in/out */
+            pointer-events: auto;
+            /* can still click when visible */
+        }
+
+        .controls-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+            /* ignore clicks when hidden */
+        }
+    </style>
+</head>
 
 
-    <body class="element-wrapper">
-        <!-- Start Preloader  -->
-        <div id="preloader">
-            <div id="ed-preloader" class="ed-preloader">
-                <div class="animation-preloader">
-                    <div class="spinner"></div>
-                </div>
+<body class="element-wrapper">
+    <!-- Start Preloader  -->
+    <div id="preloader">
+        <div id="ed-preloader" class="ed-preloader">
+            <div class="animation-preloader">
+                <div class="spinner"></div>
             </div>
         </div>
-        <!-- End Preloader -->
+    </div>
+    <!-- End Preloader -->
 
-        <!-- Custom Cursor Start -->
-        <div id="ed-mouse">
-            <div id="cursor-ball"></div>
-        </div>
-        <!-- Custom Cursor End -->
+    <!-- Custom Cursor Start -->
+    <div id="ed-mouse">
+        <div id="cursor-ball"></div>
+    </div>
+    <!-- Custom Cursor End -->
 
-        <!-- menu -->
-        <div id="menu-query">
+    <!-- menu -->
+    <div id="menu-query">
 
-        </div>
-        <!-- menu -->
+    </div>
+    <!-- menu -->
 
-        <div id="smooth-wrapper">
-            <div id="smooth-content">
-                <main>
-                    <div class="section-bg hero-bg">
-                        <!-- Start Bredcrumbs Area -->
-                        <section class="ed-breadcrumbs background-image" style="background-image: url('../assets/images/breadcrumbs-bg.png');">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="ed-breadcrumbs__content">
-                                            <h3 class="ed-breadcrumbs__title">Course Details</h3>
-                                            <ul class="ed-breadcrumbs__menu">
-                                                <li class="active"><a href="../">Home</a></li>
-                                                <li>/</li>
-                                                <li>Course Details</li>
-                                            </ul>
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <main>
+                <div class="section-bg hero-bg">
+                    <!-- Start Breadcrumbs Area -->
+                    <section class="ed-breadcrumbs" style="background-image: url('../assets/images/course/course-details/details-img-1.png'); 
+                  background-size: cover; 
+                  background-position: center; 
+                  background-repeat: no-repeat; 
+                  min-height: 250px; 
+                  display: flex; 
+                  align-items: center;">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="ed-breadcrumbs__content"
+                                        style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 6px;">
+                                        <h3 class="ed-breadcrumbs__title text-white">Course Details</h3>
+                                        <ul class="ed-breadcrumbs__menu"
+                                            style="color:#fff; list-style:none; padding:0; margin:0;">
+                                            <li class="active" style="display:inline;"><a href="../"
+                                                    style="color:#dedede; text-decoration:none;">Home</a></li>
+                                            <li style="display:inline; margin: 0 5px;color:#fff; text-decoration:none;">
+                                                /</li>
+                                            <li style="display:inline;color:#fff; text-decoration:none;">Course Details
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- End Breadcrumbs Area -->
+                </div>
+
+                <!-- Start Course Details Area -->
+                <section class="ed-course__details">
+                    <div class="container ed-container">
+                        <div class="row">
+                            <div class="col-lg-8 col-12">
+                                <!-- Course Details Content -->
+                                <div class="ed-course__details-content">
+                                    <!-- Course Details Image -->
+                                    <div class="ed-course__details-img">
+                                        <div class="video-wrapper">
+                                            <!-- YouTube Player -->
+                                            <div id="player"></div>
+
+                                            <!-- Click Blocker -->
+                                            <div id="clickBlocker"></div>
+
+                                            <!-- Custom Controls -->
+                                            <div class="controls-overlay">
+                                                <div class="video-info">
+                                                    <h3>Learn Ethical Hacking From Scratch</h3>
+                                                    <small>IT & Software > Network & Security > Ethical Hacking</small>
+                                                </div>
+
+                                                <!-- Progress Bar -->
+                                                <div class="progress-container" id="progressContainer">
+                                                    <div class="progress" id="progressBar"></div>
+                                                </div>
+
+                                                <!-- Timer -->
+                                                <div class="timer" id="timeDisplay">0:00 / 0:00</div>
+
+                                                <div class="control-buttons">
+                                                    <span onclick="rewindVideo()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                            viewBox="0 0 48 48" fill="none">
+                                                            <path d="M22 28V21L20 22.3125" stroke="white"
+                                                                stroke-width="1.5" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path
+                                                                d="M25 27.5627C25.3134 27.8373 25.7029 28 26.125 28C27.1605 28 28 27.0206 28 25.8125C28 24.6044 27.1605 23.625 26.125 23.625C25.7029 23.625 25.3134 23.7877 25 24.0623L25.375 21H28"
+                                                                stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path
+                                                                d="M15.8161 15.8041C10.9691 20.1977 10.7039 27.579 15.2238 32.2905C19.7437 37.0021 27.337 37.2599 32.1839 32.8663C37.0309 28.4726 37.2961 21.0914 32.7762 16.3798C30.2053 13.6999 26.64 12.4609 23.1514 12.6992M24.8571 10L21.8008 12.8329L24.8571 15.871"
+                                                                stroke="white" stroke-width="2" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg>
+                                                    </span>
+                                                    <span onclick="togglePlay()" id="playBtn">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                            viewBox="0 0 48 48" fill="none">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M34.99 23.7773C34.9219 22.8388 34.4205 21.9278 33.4859 21.394L19.4878 13.3994C17.4878 12.2571 15 13.7013 15 16.0044V31.9937C15 34.2968 17.4878 35.741 19.4878 34.5988L33.4859 26.6041C34.4205 26.0703 34.9219 25.1593 34.99 24.2208C35.0226 24.0751 35.0226 23.9231 34.99 23.7773Z"
+                                                                fill="white" />
+                                                        </svg>
+                                                    </span>
+                                                    <span onclick="forwardVideo()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                            viewBox="0 0 48 48" fill="none">
+                                                            <path d="M22 28V21L20 22.3125" stroke="white"
+                                                                stroke-width="1.5" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path
+                                                                d="M25 27.5627C25.3134 27.8373 25.7029 28 26.125 28C27.1605 28 28 27.0206 28 25.8125C28 24.6044 27.1605 23.625 26.125 23.625C25.7029 23.625 25.3134 23.7877 25 24.0623L25.375 21H28"
+                                                                stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path
+                                                                d="M32.1839 15.8041C37.0309 20.1977 37.2961 27.579 32.7762 32.2905C28.2563 37.0021 20.663 37.2599 15.8161 32.8663C10.9691 28.4726 10.7039 21.0914 15.2238 16.3798C17.7947 13.6999 21.36 12.4609 24.8486 12.6992M23.1429 10L26.1992 12.8329L23.1429 15.871"
+                                                                stroke="white" stroke-width="2" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        Starting SEO as your Home Based Business Online Courses
+                                    </h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectur adipisicing elit, sed do eiusmod tempor inc
+                                        idid unt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud
+                                        exerec tation ullamco laboris nis
+                                        aliquip commodo consequat duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse cillum dolore eu fugiat nulla pariatur enim ipsam.
+                                    </p>
+                                    <br />
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectur adipisicing elit, sed do eiusmod tempor inc
+                                        idid unt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud
+                                        exerec tation ullamco laboris nis
+                                        aliquip commodo consequat duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse cillum dolore eu fugiat nulla pariatur enim ipsam.
+                                    </p>
+
+                                    <!-- Course Details Content List -->
+                                    <div class="ed-course__details-list">
+                                        <h5>What You’ll Learn?</h5>
+                                        <ul>
+                                            <li><img src="../assets/images/icons/icon-check-blue.svg"
+                                                    alt="icon-check-blue" />Tempus imperdiet nulla malesuada
+                                                pellentesque elit eget gravida cum sociis</li>
+                                            <li><img src="../assets/images/icons/icon-check-blue.svg"
+                                                    alt="icon-check-blue" />Neque sodales ut etiam sit amet nisl purus
+                                                non tellus orci ac auctor</li>
+                                            <li><img src="../assets/images/icons/icon-check-blue.svg"
+                                                    alt="icon-check-blue" />Tristique nulla aliquet enim tortor at
+                                                auctor urna. Sit amet aliquam id diam maer</li>
+                                            <li><img src="../assets/images/icons/icon-check-blue.svg"
+                                                    alt="icon-check-blue" />Tempus imperdiet nulla malesuada
+                                                pellentesque elit eget gravida cum sociis</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Course Details Image Two -->
+                                    <div class="ed-course__details-img image-2">
+                                        <img src="../assets/images/course/course-details/details-img-2.png"
+                                            alt="course-details-img-2" />
+                                    </div>
+
+                                    <!-- Course Details Content List -->
+                                    <div class="ed-course__details-list">
+                                        <h5>Why choose you this course?</h5>
+                                        <ul>
+                                            <li><img src="../assets/images/icons/icon-check-blue.svg"
+                                                    alt="icon-check-blue" />Tempus imperdiet nulla malesuada
+                                                pellentesque elit eget gravida cum sociis</li>
+                                            <li><img src="../assets/images/icons/icon-check-blue.svg"
+                                                    alt="icon-check-blue" />Neque sodales ut etiam sit amet nisl purus
+                                                non tellus orci ac auctor</li>
+                                            <li><img src="../assets/images/icons/icon-check-blue.svg"
+                                                    alt="icon-check-blue" />Tristique nulla aliquet enim tortor at
+                                                auctor urna. Sit amet aliquam id diam maer</li>
+                                            <li><img src="../assets/images/icons/icon-check-blue.svg"
+                                                    alt="icon-check-blue" />Tempus imperdiet nulla malesuada
+                                                pellentesque elit eget gravida cum sociis</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12">
+                                <!-- Course Details Sidebar -->
+                                <div class="ed-course__sidebar">
+                                    <div class="ed-course__sidebar-widget">
+                                        <h4 class="ed-course__sidebar-title">
+                                            Course Information:
+                                        </h4>
+                                        <ul>
+                                            <li>Price: <span class="price">$30</span></li>
+                                            <li>Instructor: <span>Laura Martinez</span></li>
+                                            <li>Certifications: <span>Yes</span></li>
+                                            <li>Lessons: <span>17</span></li>
+                                            <li>Duration: <span>15 weeks</span></li>
+                                            <li>Language: <span>English</span></li>
+                                            <li>Students: <span>646</span></li>
+                                        </ul>
+                                        <div style="text-align: center; margin-top: 15px;">
+                                            <button type="submit" class="ed-btn">Purchase Course<i
+                                                    class="fi fi-rr-shopping-cart"></i></button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="ed-course__sidebar-widget">
+                                        <h4 class="ed-course__sidebar-title">Contact Us</h4>
+                                        <!-- Sigle Info  -->
+                                        <div class="ed-contact__info-item">
+                                            <div class="ed-contact__info-icon">
+                                                <img src="../assets/images/icons/icon-phone-blue.svg"
+                                                    alt="icon-phone-blue" />
+                                            </div>
+                                            <div class="ed-contact__info-content">
+                                                <span>24/7 Support</span>
+                                                <a href="tel:+532 321 33 33">+532 321 33 33</a>
+                                            </div>
+                                        </div>
+                                        <!-- Sigle Info  -->
+                                        <div class="ed-contact__info-item">
+                                            <div class="ed-contact__info-icon">
+                                                <img src="../assets/images/icons/icon-envelope-blue.svg"
+                                                    alt="icon-envelope-blue" />
+                                            </div>
+                                            <div class="ed-contact__info-content">
+                                                <span>Send Message</span>
+                                                <a href="mailto:Coursearly@gmail.com">Coursearly@gmail.com3</a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sigle Info  -->
+                                        <div class="ed-contact__info-item">
+                                            <div class="ed-contact__info-icon">
+                                                <img src="../assets/images/icons/icon-location-blue.svg"
+                                                    alt="icon-location-blue" />
+                                            </div>
+                                            <div class="ed-contact__info-content">
+                                                <span>Our Locati0n</span>
+                                                <a href="#">32/Jenin, London</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                        <!-- End Bredcrumbs Area -->
+                        </div>
                     </div>
+                </section>
+                <!-- End Course Details Area -->
 
-                    <!-- Start Course Details Area -->
-                    <section class="ed-course__details">
-                        <div class="container ed-container">
+                <!-- Start Call Action Area -->
+                <section class="ed-call-action position-relative">
+                    <div class="container ed-container">
+                        <div class="ed-call-action__inner position-relative">
+                            <div class="ed-call-action__shapes">
+                                <img class="ed-call-action__shape-1 rotate-ani"
+                                    src="../assets/images/call-action/call-action-1/shape-1.svg" alt="shape-1" />
+                                <img class="ed-call-action__shape-2"
+                                    src="../assets/images/call-action/call-action-1/shape-2.svg" alt="shape-2" />
+                                <img class="ed-call-action__shape-3 updown-ani"
+                                    src="../assets/images/call-action/call-action-1/shape-3.svg" alt="shape-3" />
+                            </div>
                             <div class="row">
-                                <div class="col-lg-8 col-12">
-                                    <!-- Course Details Content -->
-                                    <div class="ed-course__details-content">
-                                        <!-- Course Details Image -->
-                                        <div class="ed-course__details-img">
-                                            <img src="../assets/images/course/course-details/details-img-1.png" alt="course-details-img-1" />
-                                        </div>
-                                        <h3>
-                                            Starting SEO as your Home Based Business Online Courses
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectur adipisicing elit, sed do eiusmod tempor inc idid unt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exerec tation ullamco laboris nis
-                                            aliquip commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur enim ipsam.
-                                        </p>
-                                        <br />
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectur adipisicing elit, sed do eiusmod tempor inc idid unt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exerec tation ullamco laboris nis
-                                            aliquip commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur enim ipsam.
-                                        </p>
-
-                                        <!-- Course Details Content List -->
-                                        <div class="ed-course__details-list">
-                                            <h5>What You’ll Learn?</h5>
-                                            <ul>
-                                                <li><img src="../assets/images/icons/icon-check-blue.svg" alt="icon-check-blue" />Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum sociis</li>
-                                                <li><img src="../assets/images/icons/icon-check-blue.svg" alt="icon-check-blue" />Neque sodales ut etiam sit amet nisl purus non tellus orci ac auctor</li>
-                                                <li><img src="../assets/images/icons/icon-check-blue.svg" alt="icon-check-blue" />Tristique nulla aliquet enim tortor at auctor urna. Sit amet aliquam id diam maer</li>
-                                                <li><img src="../assets/images/icons/icon-check-blue.svg" alt="icon-check-blue" />Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum sociis</li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- Course Details Image Two -->
-                                        <div class="ed-course__details-img image-2">
-                                            <img src="../assets/images/course/course-details/details-img-2.png" alt="course-details-img-2" />
-                                        </div>
-
-                                        <!-- Course Details Content List -->
-                                        <div class="ed-course__details-list">
-                                            <h5>Why choose you this course?</h5>
-                                            <ul>
-                                                <li><img src="../assets/images/icons/icon-check-blue.svg" alt="icon-check-blue" />Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum sociis</li>
-                                                <li><img src="../assets/images/icons/icon-check-blue.svg" alt="icon-check-blue" />Neque sodales ut etiam sit amet nisl purus non tellus orci ac auctor</li>
-                                                <li><img src="../assets/images/icons/icon-check-blue.svg" alt="icon-check-blue" />Tristique nulla aliquet enim tortor at auctor urna. Sit amet aliquam id diam maer</li>
-                                                <li><img src="../assets/images/icons/icon-check-blue.svg" alt="icon-check-blue" />Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum sociis</li>
-                                            </ul>
-                                        </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="ed-call-action__img">
+                                        <img src="../assets/images/call-action/call-action-1/call-action-img.png"
+                                            alt="call-action-img" />
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-12">
-                                    <!-- Course Details Sidebar -->
-                                    <div class="ed-course__sidebar">
-                                        <div class="ed-course__sidebar-widget">
-                                            <h4 class="ed-course__sidebar-title">
-                                                Course Information:
-                                            </h4>
-                                            <ul>
-                                                <li>Price: <span class="price">$30</span></li>
-                                                <li>Instructor: <span>Laura Martinez</span></li>
-                                                <li>Certifications: <span>Yes</span></li>
-                                                <li>Lessons: <span>17</span></li>
-                                                <li>Duration: <span>15 weeks</span></li>
-                                                <li>Language: <span>English</span></li>
-                                                <li>Students: <span>646</span></li>
-                                            </ul>
-                                            <div style="text-align: center; margin-top: 15px;">
-                                                <button type="submit" class="ed-btn">Purchase Course<i class="fi fi-rr-shopping-cart"></i></button>
-                                            </div>
+                                <div class="col-lg-6 col-12 order-class">
+                                    <div class="ed-call-action__content">
+                                        <div class="ed-section-head">
+                                            <span class="ed-section-head__sm-title">GET STARTED NOW</span>
+                                            <h3 class="ed-section-head__title">
+                                                Affordable Your Online Courses <br />
+                                                & Learning Opportunities
+                                            </h3>
+                                            <p class="ed-section-head__text">
+                                                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia
+                                                deserunt mollit. Excepteur sint occaecat.
+                                            </p>
                                         </div>
-
-
-                                        <div class="ed-course__sidebar-widget">
-                                            <h4 class="ed-course__sidebar-title">Contact Us</h4>
-                                            <!-- Sigle Info  -->
-                                            <div class="ed-contact__info-item">
-                                                <div class="ed-contact__info-icon">
-                                                    <img src="../assets/images/icons/icon-phone-blue.svg" alt="icon-phone-blue" />
-                                                </div>
-                                                <div class="ed-contact__info-content">
-                                                    <span>24/7 Support</span>
-                                                    <a href="tel:+532 321 33 33">+532 321 33 33</a>
-                                                </div>
-                                            </div>
-                                            <!-- Sigle Info  -->
-                                            <div class="ed-contact__info-item">
-                                                <div class="ed-contact__info-icon">
-                                                    <img src="../assets/images/icons/icon-envelope-blue.svg" alt="icon-envelope-blue" />
-                                                </div>
-                                                <div class="ed-contact__info-content">
-                                                    <span>Send Message</span>
-                                                    <a href="mailto:Coursearly@gmail.com">Coursearly@gmail.com3</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Sigle Info  -->
-                                            <div class="ed-contact__info-item">
-                                                <div class="ed-contact__info-icon">
-                                                    <img src="../assets/images/icons/icon-location-blue.svg" alt="icon-location-blue" />
-                                                </div>
-                                                <div class="ed-contact__info-content">
-                                                    <span>Our Locati0n</span>
-                                                    <a href="#">32/Jenin, London</a>
-                                                </div>
-                                            </div>
+                                        <div class="ed-call-action__content-btn">
+                                            <a href="../courses/" class="ed-btn"> Start Learning Today<i
+                                                    class="fi fi-rr-arrow-small-right"></i> </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <!-- End Course Details Area -->
+                    </div>
+                </section>
+                <!-- End Call Action Area -->
+            </main>
 
-                    <!-- Start Call Action Area -->
-                    <section class="ed-call-action position-relative">
-                        <div class="container ed-container">
-                            <div class="ed-call-action__inner position-relative">
-                                <div class="ed-call-action__shapes">
-                                    <img class="ed-call-action__shape-1 rotate-ani" src="../assets/images/call-action/call-action-1/shape-1.svg" alt="shape-1" />
-                                    <img class="ed-call-action__shape-2" src="../assets/images/call-action/call-action-1/shape-2.svg" alt="shape-2" />
-                                    <img class="ed-call-action__shape-3 updown-ani" src="../assets/images/call-action/call-action-1/shape-3.svg" alt="shape-3" />
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <div class="ed-call-action__img">
-                                            <img src="../assets/images/call-action/call-action-1/call-action-img.png" alt="call-action-img" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-12 order-class">
-                                        <div class="ed-call-action__content">
-                                            <div class="ed-section-head">
-                                                <span class="ed-section-head__sm-title">GET STARTED NOW</span>
-                                                <h3 class="ed-section-head__title">
-                                                    Affordable Your Online Courses <br />
-                                                    & Learning Opportunities
-                                                </h3>
-                                                <p class="ed-section-head__text">
-                                                    Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit. Excepteur sint occaecat.
-                                                </p>
-                                            </div>
-                                            <div class="ed-call-action__content-btn">
-                                                <a href="../courses/" class="ed-btn"> Start Learning Today<i class="fi fi-rr-arrow-small-right"></i> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- End Call Action Area -->
-                </main>
 
-                
-                <!-- Start Footer Area -->
-                <footer class="ed-footer section-bg-color-1 position-relative" id="footer">
-                    
-                </footer>
-                <!-- End Footer Area  -->
-            </div>
+            <!-- Start Footer Area -->
+            <footer class="ed-footer section-bg-color-1 position-relative" id="footer">
+
+            </footer>
+            <!-- End Footer Area  -->
         </div>
+    </div>
 
-        <!-- Start Login Modal -->
-        <div class="modal fade ed-auth__modal" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="ed-auth__modal-content modal-content">
-                    <button type="button" class="ed-auth__modal-close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fi-rr-cross"></i>
-                    </button>
-
-                    <!-- Auth Head  -->
-                    <div class="ed-auth__modal-head">
-                        <a href="index.html" class="ed-auth__modal-logo">
-                            <img src="../assets/images/logo.svg" alt="logo" />
-                        </a>
-                        <h3 class="ed-auth__modal-title">Sign In Now</h3>
-                        <p class="ed-auth__modal-text">
-                            Didn’t Create an account?
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#registerModal">
-                                Sign Up
-                            </button>
-                        </p>
-                    </div>
-
-                    <!-- Auth Body  -->
-                    <div class="ed-auth__modal-body">
-                        <form action="#" method="post" class="ed-auth__modal-form">
-                            <div class="form-group">
-                                <input type="text" name="name" placeholder="Enter user name" required />
-                            </div>
-
-                            <div class="form-group">
-                                <input type="password" name="password" placeholder="Enter password" required />
-                            </div>
-
-                            <div class="form-check">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    Remember me
-                                </label>
-                            </div>
-                            <div class="ed-auth__form-btn">
-                                <button type="submit" class="ed-btn">Sign In<i class="fi fi-rr-arrow-small-right"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Auth Footer  -->
-                    <div class="ed-auth__modal-footer">
-                        <div class="ed-auth__modal-third-party">
-                            <p>Or Sign In with</p>
-                            <ul class="ed-auth__modal-third-party-list">
-                                <li>
-                                    <a class="google-login" href="https://www.google.com/"><img src="../assets/images/icons/icon-color-google.svg" alt="icon-color-google" /></a>
-                                </li>
-
-                                <li>
-                                    <a class="facebook-login" href="https://facebook.com/"><img src="../assets/images/icons/icon-color-facebook.svg" alt="icon-color-facebook" /></a>
-                                </li>
-                                <li>
-                                    <a class="linkedin-login" href="https://www.linkedin.com/"><img src="../assets/images/icons/icon-color-linkedin.svg" alt="icon-color-linkedin" /></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Login Modal -->
-
-        <!-- Start Register Modal -->
-        <div class="modal fade ed-auth__modal" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="ed-auth__modal-content modal-content">
-                    <button type="button" class="ed-auth__modal-close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fi-rr-cross"></i>
-                    </button>
-
-                    <!-- Auth Head  -->
-                    <div class="ed-auth__modal-head">
-                        <a href="index.html" class="ed-auth__modal-logo">
-                            <img src="../assets/images/logo.svg" alt="logo" />
-                        </a>
-                        <h3 class="ed-auth__modal-title">Sign Up Now</h3>
-                        <p class="ed-auth__modal-text">
-                            already have an account?
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
-                                Sign In
-                            </button>
-                        </p>
-                    </div>
-
-                    <!-- Auth Body  -->
-                    <div class="ed-auth__modal-body">
-                        <form action="#" method="post" class="ed-auth__modal-form">
-                            <div class="form-group">
-                                <input type="text" name="name" placeholder="Enter name" required />
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="user name" placeholder="Enter user name" required />
-                            </div>
-
-                            <div class="form-group">
-                                <input type="email" name="email" placeholder="Enter email" required />
-                            </div>
-
-                            <div class="form-group">
-                                <input type="password" name="password" placeholder="Enter password" required />
-                            </div>
-
-                            <div class="form-check">
-                                <label class="form-check-label" for="flexCheckDefault2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" />
-                                    I agree with your <strong>Privacy Policy</strong>
-                                </label>
-                            </div>
-                            <div class="ed-auth__form-btn">
-                                <button type="submit" class="ed-btn">Register Now<i class="fi fi-rr-arrow-small-right"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Auth Footer  -->
-                    <div class="ed-auth__modal-footer">
-                        <div class="ed-auth__modal-third-party">
-                            <p>Or Sign Up with</p>
-                            <ul class="ed-auth__modal-third-party-list">
-                                <li>
-                                    <a class="google-login" href="https://www.google.com/"><img src="../assets/images/icons/icon-color-google.svg" alt="icon-color-google" /></a>
-                                </li>
-
-                                <li>
-                                    <a class="facebook-login" href="https://facebook.com/"><img src="../assets/images/icons/icon-color-facebook.svg" alt="icon-color-facebook" /></a>
-                                </li>
-                                <li>
-                                    <a class="linkedin-login" href="https://www.linkedin.com/"><img src="../assets/images/icons/icon-color-linkedin.svg" alt="icon-color-linkedin" /></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Register Modal -->
-
-        <!-- Start Sidebar Cart -->
-        <div class="offcanvas offcanvas-end ed-sidebar ed-sidebar-cart" tabindex="-1" id="edSidebarCart" aria-labelledby="offcanvasRightLabel">
-            <div class="ed-sidebar-header">
-                <h3 class="ed-sidebar-header-title">Add to cart</h3>
-                <button type="button" class="text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-                    <i class="fi fi-rr-cross"></i>
+    <!-- Start Login Modal -->
+    <div class="modal fade ed-auth__modal" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="ed-auth__modal-content modal-content">
+                <button type="button" class="ed-auth__modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fi-rr-cross"></i>
                 </button>
-            </div>
-            <div class="ed-sidebar-body">
-                <!-- Single Cart Item  -->
-                <div class="ed-sidebar-cart-item">
-                    <div class="ed-sidebar-cart-main">
-                        <div class="ed-sidebar-cart-img">
-                            <img src="../assets/images/product/cart-1.png" alt="cart-1" />
-                        </div>
-                        <div class="ed-sidebar-cart-info">
-                            <span>1 x <strong>$64</strong></span>
-                            <a href="product-details.html">Digital marketing demo</a>
-                        </div>
-                    </div>
-                    <div class="ed-sidebar-cart-remove">
-                        <button type="button"><i class="fi-rr-cross"></i></button>
-                    </div>
+
+                <!-- Auth Head  -->
+                <div class="ed-auth__modal-head">
+                    <a href="index.html" class="ed-auth__modal-logo">
+                        <img src="../assets/images/logo.svg" alt="logo" />
+                    </a>
+                    <h3 class="ed-auth__modal-title">Sign In Now</h3>
+                    <p class="ed-auth__modal-text">
+                        Didn’t Create an account?
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#registerModal">
+                            Sign Up
+                        </button>
+                    </p>
                 </div>
 
-                <!-- Single Cart Item  -->
-                <div class="ed-sidebar-cart-item">
-                    <div class="ed-sidebar-cart-main">
-                        <div class="ed-sidebar-cart-img">
-                            <img src="../assets/images/product/cart-2.png" alt="cart-2" />
+                <!-- Auth Body  -->
+                <div class="ed-auth__modal-body">
+                    <form action="#" method="post" class="ed-auth__modal-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Enter user name" required />
                         </div>
-                        <div class="ed-sidebar-cart-info">
-                            <span>1 x <strong>$74</strong></span>
-                            <a href="product-details.html">Business solution book</a>
-                        </div>
-                    </div>
-                    <div class="ed-sidebar-cart-remove">
-                        <button type="button"><i class="fi-rr-cross"></i></button>
-                    </div>
-                </div>
 
-                <!-- Single Cart Item  -->
-                <div class="ed-sidebar-cart-item">
-                    <div class="ed-sidebar-cart-main">
-                        <div class="ed-sidebar-cart-img">
-                            <img src="../assets/images/product/cart-3.png" alt="cart-3" />
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Enter password" required />
                         </div>
-                        <div class="ed-sidebar-cart-info">
-                            <span>1 x <strong>$94</strong></span>
-                            <a href="product-details.html">Business type</a>
-                        </div>
-                    </div>
-                    <div class="ed-sidebar-cart-remove">
-                        <button type="button"><i class="fi-rr-cross"></i></button>
-                    </div>
-                </div>
-            </div>
 
-            <div class="ed-sidebar-footer">
-                <div class="ed-sidebar-cart-subtotal">
-                    <p>Subtotal:<span> $224</span></p>
-                    <a href="checkout.html" class="ed-sidebar-cart-btn">Checkout</a>
-                </div>
-            </div>
-        </div>
-        <!-- End Sidebar Cart -->
-
-        <!-- Start Sidebar  -->
-        <div class="offcanvas offcanvas-end ed-sidebar" tabindex="-1" id="edSidebar" aria-labelledby="offcanvasRightLabel">
-            <div class="ed-sidebar-header">
-                <a href="index-1.html" class="ed-sidebar-logo">
-                    <img src="../assets/images/logo.svg" alt="logo" />
-                </a>
-                <button type="button" class="text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-                    <i class="fi fi-rr-cross"></i>
-                </button>
-            </div>
-            <div class="ed-sidebar-body m-0">
-                <!-- Single Widget  -->
-                <div class="ed-sidebar-widget">
-                    <h3 class="ed-sidebar-widget-title">Contacts Us:</h3>
-                    <!-- Sigle Info  -->
-                    <div class="ed-contact__info-item">
-                        <div class="ed-contact__info-icon">
-                            <img src="../assets/images/icons/icon-phone-blue.svg" alt="icon-phone-blue" />
+                        <div class="form-check">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                Remember me
+                            </label>
                         </div>
-                        <div class="ed-contact__info-content">
-                            <span>24/7 Support</span>
-                            <a href="tel:+532 321 33 33">+532 321 33 33</a>
+                        <div class="ed-auth__form-btn">
+                            <button type="submit" class="ed-btn">Sign In<i
+                                    class="fi fi-rr-arrow-small-right"></i></button>
                         </div>
-                    </div>
-                    <!-- Sigle Info  -->
-                    <div class="ed-contact__info-item">
-                        <div class="ed-contact__info-icon">
-                            <img src="../assets/images/icons/icon-envelope-blue.svg" alt="icon-envelope-blue" />
-                        </div>
-                        <div class="ed-contact__info-content">
-                            <span>Send Message</span>
-                            <a href="mailto:Coursearly@gmail.com">Coursearly@gmail.com3</a>
-                        </div>
-                    </div>
-
-                    <!-- Sigle Info  -->
-                    <div class="ed-contact__info-item">
-                        <div class="ed-contact__info-icon">
-                            <img src="../assets/images/icons/icon-location-blue.svg" alt="icon-location-blue" />
-                        </div>
-                        <div class="ed-contact__info-content">
-                            <span>Our Locati0n</span>
-                            <a href="#">32/Jenin, London</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Widget  -->
-                <div class="ed-sidebar-widget">
-                    <h3 class="ed-sidebar-widget-title">Follow Us:</h3>
-                    <ul class="ed-sidebar-social">
-                        <li>
-                            <a href="https://www.facebook.com/" target="_blank"><img src="../assets/images/icons/icon-dark-facebook.svg" alt="icon-dark-facebook" /></a>
-                        </li>
-                        <li>
-                            <a href="https://www.twitter.com/" target="_blank"><img src="../assets/images/icons/icon-dark-twitter.svg" alt="icon-dark-twitter" /></a>
-                        </li>
-                        <li>
-                            <a href="https://www.dribbble.com/" target="_blank"><img src="../assets/images/icons/icon-dark-dribbble.svg" alt="icon-dark-dribbble" /></a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/" target="_blank"><img src="../assets/images/icons/icon-dark-instagram.svg" alt="icon-dark-instagram" /></a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Single Widget  -->
-                <div class="ed-sidebar-widget">
-                    <h3 class="ed-sidebar-widget-title">Subscribe Now:</h3>
-                    <form action="#" method="post" class="ed-sidebar-subscribe">
-                        <input type="email" name="email-address" placeholder="Enter email" required />
-                        <button type="submit" class="ed-btn">Subscribe<i class="fi fi-rr-arrow-small-right"></i></button>
                     </form>
                 </div>
+                <!-- Auth Footer  -->
+                <div class="ed-auth__modal-footer">
+                    <div class="ed-auth__modal-third-party">
+                        <p>Or Sign In with</p>
+                        <ul class="ed-auth__modal-third-party-list">
+                            <li>
+                                <a class="google-login" href="https://www.google.com/"><img
+                                        src="../assets/images/icons/icon-color-google.svg"
+                                        alt="icon-color-google" /></a>
+                            </li>
+
+                            <li>
+                                <a class="facebook-login" href="https://facebook.com/"><img
+                                        src="../assets/images/icons/icon-color-facebook.svg"
+                                        alt="icon-color-facebook" /></a>
+                            </li>
+                            <li>
+                                <a class="linkedin-login" href="https://www.linkedin.com/"><img
+                                        src="../assets/images/icons/icon-color-linkedin.svg"
+                                        alt="icon-color-linkedin" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- End Sidebar  -->
+    </div>
+    <!-- End Login Modal -->
 
-        <!-- Start Back To Top  -->
-        <div class="progress-wrap">
-            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-            </svg>
+    <!-- Start Register Modal -->
+    <div class="modal fade ed-auth__modal" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="ed-auth__modal-content modal-content">
+                <button type="button" class="ed-auth__modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fi-rr-cross"></i>
+                </button>
+
+                <!-- Auth Head  -->
+                <div class="ed-auth__modal-head">
+                    <a href="index.html" class="ed-auth__modal-logo">
+                        <img src="../assets/images/logo.svg" alt="logo" />
+                    </a>
+                    <h3 class="ed-auth__modal-title">Sign Up Now</h3>
+                    <p class="ed-auth__modal-text">
+                        already have an account?
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            Sign In
+                        </button>
+                    </p>
+                </div>
+
+                <!-- Auth Body  -->
+                <div class="ed-auth__modal-body">
+                    <form action="#" method="post" class="ed-auth__modal-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Enter name" required />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="user name" placeholder="Enter user name" required />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Enter email" required />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Enter password" required />
+                        </div>
+
+                        <div class="form-check">
+                            <label class="form-check-label" for="flexCheckDefault2">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" />
+                                I agree with your <strong>Privacy Policy</strong>
+                            </label>
+                        </div>
+                        <div class="ed-auth__form-btn">
+                            <button type="submit" class="ed-btn">Register Now<i
+                                    class="fi fi-rr-arrow-small-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Auth Footer  -->
+                <div class="ed-auth__modal-footer">
+                    <div class="ed-auth__modal-third-party">
+                        <p>Or Sign Up with</p>
+                        <ul class="ed-auth__modal-third-party-list">
+                            <li>
+                                <a class="google-login" href="https://www.google.com/"><img
+                                        src="../assets/images/icons/icon-color-google.svg"
+                                        alt="icon-color-google" /></a>
+                            </li>
+
+                            <li>
+                                <a class="facebook-login" href="https://facebook.com/"><img
+                                        src="../assets/images/icons/icon-color-facebook.svg"
+                                        alt="icon-color-facebook" /></a>
+                            </li>
+                            <li>
+                                <a class="linkedin-login" href="https://www.linkedin.com/"><img
+                                        src="../assets/images/icons/icon-color-linkedin.svg"
+                                        alt="icon-color-linkedin" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- End Back To Top -->
+    </div>
+    <!-- End Register Modal -->
 
-        <!-- Jquery JS -->
-        <script src="../assets/plugins/js/jquery.min.js"></script>
-        <script src="../assets/plugins/js/jquery-migrate.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="../assets/plugins/js/bootstrap.min.js"></script>
+    <!-- Start Sidebar Cart -->
+    <div class="offcanvas offcanvas-end ed-sidebar ed-sidebar-cart" tabindex="-1" id="edSidebarCart"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="ed-sidebar-header">
+            <h3 class="ed-sidebar-header-title">Add to cart</h3>
+            <button type="button" class="text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="fi fi-rr-cross"></i>
+            </button>
+        </div>
+        <div class="ed-sidebar-body">
+            <!-- Single Cart Item  -->
+            <div class="ed-sidebar-cart-item">
+                <div class="ed-sidebar-cart-main">
+                    <div class="ed-sidebar-cart-img">
+                        <img src="../assets/images/product/cart-1.png" alt="cart-1" />
+                    </div>
+                    <div class="ed-sidebar-cart-info">
+                        <span>1 x <strong>$64</strong></span>
+                        <a href="product-details.html">Digital marketing demo</a>
+                    </div>
+                </div>
+                <div class="ed-sidebar-cart-remove">
+                    <button type="button"><i class="fi-rr-cross"></i></button>
+                </div>
+            </div>
 
-        <!-- Gsap JS -->
-        <script src="../assets/plugins/js/gsap/gsap.js"></script>
-        <script src="../assets/plugins/js/gsap/gsap-scroll-to-plugin.js"></script>
-        <script src="../assets/plugins/js/gsap/gsap-scroll-smoother.js"></script>
-        <script src="../assets/plugins/js/gsap/gsap-scroll-trigger.js"></script>
-        <script src="../assets/plugins/js/gsap/gsap-split-text.js"></script>
+            <!-- Single Cart Item  -->
+            <div class="ed-sidebar-cart-item">
+                <div class="ed-sidebar-cart-main">
+                    <div class="ed-sidebar-cart-img">
+                        <img src="../assets/images/product/cart-2.png" alt="cart-2" />
+                    </div>
+                    <div class="ed-sidebar-cart-info">
+                        <span>1 x <strong>$74</strong></span>
+                        <a href="product-details.html">Business solution book</a>
+                    </div>
+                </div>
+                <div class="ed-sidebar-cart-remove">
+                    <button type="button"><i class="fi-rr-cross"></i></button>
+                </div>
+            </div>
 
-        <!-- Wow JS -->
-        <script src="../assets/plugins/js/wow.min.js"></script>
-        <!-- Owl Carousel JS -->
-        <script src="../assets/plugins/js/owl.carousel.min.js"></script>
-        <!-- Swiper Slider JS -->
-        <script src="../assets/plugins/js/swiper-bundle.min.js"></script>
-        <!-- Magnific Popup JS -->
-        <script src="../assets/plugins/js/magnific-popup.min.js"></script>
-        <!-- CounterUp  JS -->
-        <script src="../assets/plugins/js/jquery.counterup.min.js"></script>
-        <script src="../assets/plugins/js/waypoints.min.js"></script>
-        <!-- Nice Select JS -->
-        <script src="../assets/plugins/js/nice-select.min.js"></script>
-        <!-- Back To Top JS -->
-        <script src="../assets/plugins/js/backToTop.js"></script>
+            <!-- Single Cart Item  -->
+            <div class="ed-sidebar-cart-item">
+                <div class="ed-sidebar-cart-main">
+                    <div class="ed-sidebar-cart-img">
+                        <img src="../assets/images/product/cart-3.png" alt="cart-3" />
+                    </div>
+                    <div class="ed-sidebar-cart-info">
+                        <span>1 x <strong>$94</strong></span>
+                        <a href="product-details.html">Business type</a>
+                    </div>
+                </div>
+                <div class="ed-sidebar-cart-remove">
+                    <button type="button"><i class="fi-rr-cross"></i></button>
+                </div>
+            </div>
+        </div>
 
-        <!-- Main JS -->
-        <script src="../assets/plugins/js/active.js"></script>
+        <div class="ed-sidebar-footer">
+            <div class="ed-sidebar-cart-subtotal">
+                <p>Subtotal:<span> $224</span></p>
+                <a href="checkout.html" class="ed-sidebar-cart-btn">Checkout</a>
+            </div>
+        </div>
+    </div>
+    <!-- End Sidebar Cart -->
 
-        <script>
-            $(document).ready(function () {
-                $('#menu-query').load('../includes/menu-others.html');
-                $('#footer').load('../includes/footer-others.html');
+    <!-- Start Sidebar  -->
+    <div class="offcanvas offcanvas-end ed-sidebar" tabindex="-1" id="edSidebar" aria-labelledby="offcanvasRightLabel">
+        <div class="ed-sidebar-header">
+            <a href="index-1.html" class="ed-sidebar-logo">
+                <img src="../assets/images/logo.svg" alt="logo" />
+            </a>
+            <button type="button" class="text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="fi fi-rr-cross"></i>
+            </button>
+        </div>
+        <div class="ed-sidebar-body m-0">
+            <!-- Single Widget  -->
+            <div class="ed-sidebar-widget">
+                <h3 class="ed-sidebar-widget-title">Contacts Us:</h3>
+                <!-- Sigle Info  -->
+                <div class="ed-contact__info-item">
+                    <div class="ed-contact__info-icon">
+                        <img src="../assets/images/icons/icon-phone-blue.svg" alt="icon-phone-blue" />
+                    </div>
+                    <div class="ed-contact__info-content">
+                        <span>24/7 Support</span>
+                        <a href="tel:+532 321 33 33">+532 321 33 33</a>
+                    </div>
+                </div>
+                <!-- Sigle Info  -->
+                <div class="ed-contact__info-item">
+                    <div class="ed-contact__info-icon">
+                        <img src="../assets/images/icons/icon-envelope-blue.svg" alt="icon-envelope-blue" />
+                    </div>
+                    <div class="ed-contact__info-content">
+                        <span>Send Message</span>
+                        <a href="mailto:Coursearly@gmail.com">Coursearly@gmail.com3</a>
+                    </div>
+                </div>
+
+                <!-- Sigle Info  -->
+                <div class="ed-contact__info-item">
+                    <div class="ed-contact__info-icon">
+                        <img src="../assets/images/icons/icon-location-blue.svg" alt="icon-location-blue" />
+                    </div>
+                    <div class="ed-contact__info-content">
+                        <span>Our Locati0n</span>
+                        <a href="#">32/Jenin, London</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Widget  -->
+            <div class="ed-sidebar-widget">
+                <h3 class="ed-sidebar-widget-title">Follow Us:</h3>
+                <ul class="ed-sidebar-social">
+                    <li>
+                        <a href="https://www.facebook.com/" target="_blank"><img
+                                src="../assets/images/icons/icon-dark-facebook.svg" alt="icon-dark-facebook" /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.twitter.com/" target="_blank"><img
+                                src="../assets/images/icons/icon-dark-twitter.svg" alt="icon-dark-twitter" /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.dribbble.com/" target="_blank"><img
+                                src="../assets/images/icons/icon-dark-dribbble.svg" alt="icon-dark-dribbble" /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/" target="_blank"><img
+                                src="../assets/images/icons/icon-dark-instagram.svg" alt="icon-dark-instagram" /></a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Single Widget  -->
+            <div class="ed-sidebar-widget">
+                <h3 class="ed-sidebar-widget-title">Subscribe Now:</h3>
+                <form action="#" method="post" class="ed-sidebar-subscribe">
+                    <input type="email" name="email-address" placeholder="Enter email" required />
+                    <button type="submit" class="ed-btn">Subscribe<i class="fi fi-rr-arrow-small-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Sidebar  -->
+
+    <!-- Start Back To Top  -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- End Back To Top -->
+
+    <!-- Jquery JS -->
+    <script src="../assets/plugins/js/jquery.min.js"></script>
+    <script src="../assets/plugins/js/jquery-migrate.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../assets/plugins/js/bootstrap.min.js"></script>
+
+    <!-- Gsap JS -->
+    <script src="../assets/plugins/js/gsap/gsap.js"></script>
+    <script src="../assets/plugins/js/gsap/gsap-scroll-to-plugin.js"></script>
+    <script src="../assets/plugins/js/gsap/gsap-scroll-smoother.js"></script>
+    <script src="../assets/plugins/js/gsap/gsap-scroll-trigger.js"></script>
+    <script src="../assets/plugins/js/gsap/gsap-split-text.js"></script>
+
+    <!-- Wow JS -->
+    <script src="../assets/plugins/js/wow.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="../assets/plugins/js/owl.carousel.min.js"></script>
+    <!-- Swiper Slider JS -->
+    <script src="../assets/plugins/js/swiper-bundle.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="../assets/plugins/js/magnific-popup.min.js"></script>
+    <!-- CounterUp  JS -->
+    <script src="../assets/plugins/js/jquery.counterup.min.js"></script>
+    <script src="../assets/plugins/js/waypoints.min.js"></script>
+    <!-- Nice Select JS -->
+    <script src="../assets/plugins/js/nice-select.min.js"></script>
+    <!-- Back To Top JS -->
+    <script src="../assets/plugins/js/backToTop.js"></script>
+
+    <!-- Main JS -->
+    <script src="../assets/plugins/js/active.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#menu-query').load('../includes/menu-others.html');
+            $('#footer').load('../includes/footer-others.html');
+        });
+    </script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        let player;
+        let isDragging = false;
+        let hideControlsTimeout;
+
+        function loadYouTubePlayer() {
+            if (window.YT && window.YT.Player) {
+                initYouTubePlayer(); // Already loaded
+            } else {
+                let tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                document.head.appendChild(tag);
+                window.onYouTubeIframeAPIReady = initYouTubePlayer;
+            }
+        }
+
+        function initYouTubePlayer() {
+            player = new YT.Player('player', {
+                videoId: 'ED0v9YuVpiE',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    modestbranding: 1,
+                    rel: 0,
+                    disablekb: 1
+                },
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange
+                }
             });
-        </script>
-    </body>
+        }
+
+        function onPlayerReady() {
+            updateProgress();
+        }
+
+        function togglePlay() {
+            const state = player.getPlayerState();
+            const btn = document.getElementById('playBtn');
+
+            if (state === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+                btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M34.99 23.7773C34.9219 22.8388 34.4205 21.9278 33.4859 21.394L19.4878 13.3994C17.4878 12.2571 15 13.7013 15 16.0044V31.9937C15 34.2968 17.4878 35.741 19.4878 34.5988L33.4859 26.6041C34.4205 26.0703 34.9219 25.1593 34.99 24.2208C35.0226 24.0751 35.0226 23.9231 34.99 23.7773Z" fill="white"/>
+                </svg>`;
+                showControls();
+            } else {
+                player.playVideo();
+                btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <path d="M26.2857 15.1111C26.2857 14.4975 26.7974 14 27.4286 14H30.8571C31.4883 14 32 14.4975 32 15.1111V32.8889C32 33.5025 31.4883 34 30.8571 34H27.4286C26.7974 34 26.2857 33.5025 26.2857 32.8889V15.1111Z" fill="white"/>
+                    <path d="M16 15.1111C16 14.4975 16.5117 14 17.1429 14H20.5714C21.2026 14 21.7143 14.4975 21.7143 15.1111V32.8889C21.7143 33.5025 21.2026 34 20.5714 34H17.1429C16.5117 34 16 33.5025 16 32.8889V15.1111Z" fill="white"/>
+                </svg>`;
+                startHideControlsTimer();
+            }
+        }
+
+        function rewindVideo() {
+            player.seekTo(player.getCurrentTime() - 15, true);
+            showControls();
+        }
+
+        function forwardVideo() {
+            player.seekTo(player.getCurrentTime() + 15, true);
+            showControls();
+        }
+
+        function updateProgress() {
+            if (player && player.getDuration) {
+                const duration = player.getDuration();
+                const currentTime = player.getCurrentTime();
+                const percent = (currentTime / duration) * 100;
+
+                document.getElementById('progressBar').style.width = percent + "%";
+                document.getElementById('timeDisplay').textContent =
+                    formatTime(currentTime) + " / " + formatTime(duration);
+            }
+            if (!isDragging) requestAnimationFrame(updateProgress);
+        }
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ":" + (secs < 10 ? "0" + secs : secs);
+        }
+
+        function seekVideo(e) {
+            const progressContainer = document.getElementById('progressContainer');
+            const rect = progressContainer.getBoundingClientRect();
+            const percent = Math.min(Math.max(0, (e.clientX - rect.left) / rect.width), 1);
+            const newTime = percent * player.getDuration();
+            player.seekTo(newTime, true);
+        }
+
+        const progressContainer = document.getElementById('progressContainer');
+        progressContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            seekVideo(e);
+        });
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) seekVideo(e);
+        });
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                updateProgress();
+            }
+        });
+
+        function onPlayerStateChange(event) {
+            updateProgress();
+            if (event.data === YT.PlayerState.PLAYING) {
+                startHideControlsTimer();
+            } else {
+                showControls();
+            }
+        }
+
+        // Fade hide/show logic
+        function startHideControlsTimer() {
+            clearTimeout(hideControlsTimeout);
+            hideControlsTimeout = setTimeout(() => {
+                document.querySelector('.controls-overlay').classList.add("hidden");
+            }, 5000);
+        }
+
+        function showControls() {
+            clearTimeout(hideControlsTimeout);
+            document.querySelector('.controls-overlay').classList.remove("hidden");
+        }
+
+        // Show controls on hover
+        document.querySelector('.video-wrapper').addEventListener('mouseenter', showControls);
+        document.querySelector('.video-wrapper').addEventListener('mouseleave', () => {
+            if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+                startHideControlsTimer();
+            }
+        });
+
+        document.querySelector('.video-wrapper').addEventListener('click', function (e) {
+            if (!e.target.closest('.control-buttons') && !e.target.closest('#progressContainer')) {
+                togglePlay();
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", loadYouTubePlayer);
+    </script>
+</body>
+
 </html>
