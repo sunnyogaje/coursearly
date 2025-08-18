@@ -248,8 +248,8 @@
                                     <option>Oldest</option>
                                     <option>A-Z</option>
                                     <option>Z-A</option>
-                                    <option>Published</option>
-                                    <option>Unpublished</option>
+                                    <option>Free Courses</option>
+                                    <option>Paid Courses</option>
                                 </select>
 
                             </div>
