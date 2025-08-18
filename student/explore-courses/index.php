@@ -22,15 +22,6 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
-    <!--alerts CSS -->
-    <link href="../../assets/assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
-    
-    <link href="../../assets/assets/plugins/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
-    
-    <link href="../../assets/assets/plugins/notify/wnoty.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="../../assets/assets/plugins/html5-editor/bootstrap-wysihtml5.css" />
-    <!-- Custom CSS -->
     <link href="../../assets/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="../../assets/css/colors/blue.css" id="theme" rel="stylesheet">

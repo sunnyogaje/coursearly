@@ -15,7 +15,7 @@
                 <!-- Mobile Menu Navigation -->
                 <nav class="offcanvas__menu">
                     <ul class="offcanvas__menu_ul">
-                        
+
                         <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="courses/">Courses</a>
                         </li>
@@ -26,6 +26,12 @@
 
                         <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="contact/">Contact Us</a>
+                        </li>
+                        <li class="offcanvas__menu_li">
+                            <a class="offcanvas__menu_item" href="become-an-instructor/">Become an Instructor</a>
+                        </li>
+                        <li class="offcanvas__menu_li">
+                            <a class="offcanvas__menu_item" href="become-an-affiliate/">Become an Affiliate</a>
                         </li>
                     </ul>
                 </nav>
@@ -63,6 +69,12 @@
                                 <li>
                                     <a href="contact/">Contact Us</a>
                                 </li>
+                                <li>
+                                    <a href="become-an-instructor/">Become an Instructor</a>
+                                </li>
+                                <li>
+                                    <a href="become-an-affiliate/">Become an Affiliate</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -70,21 +82,59 @@
                 <div class="col-lg-4 col-6">
                     <!-- Header Right -->
                     <div class="ed-header__right">
+                        <!-- Currency Dropdown -->
+                        <div class="dropdown" style="display:inline-block;">
+                            <!-- Trigger -->
+                            <button id="currencyBtn" type="button"
+                                style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i id="currencyIcon" class="flag-icon flag-icon-ng"></i>
+                            </button>
+
+                            <!-- Dropdown Menu -->
+                            <ul class="dropdown-menu" style="min-width: 140px; padding: 6px; border-radius: 6px;">
+                                <li>
+                                    <a class="dropdown-item currency-option" href="#" data-flag="flag-icon-ng"
+                                        data-text="Naira"
+                                        style="display:flex;align-items:center;gap:8px;font-size:14px;">
+                                        <i class="flag-icon flag-icon-ng"></i> Naira
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item currency-option" href="#" data-flag="flag-icon-us"
+                                        data-text="USD" style="display:flex;align-items:center;gap:8px;font-size:14px;">
+                                        <i class="flag-icon flag-icon-us"></i> USD
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item currency-option" href="#" data-flag="flag-icon-gh"
+                                        data-text="GHS" style="display:flex;align-items:center;gap:8px;font-size:14px;">
+                                        <i class="flag-icon flag-icon-gh"></i> GHS
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
                         <ul class="ed-topbar__info-social">
                             <li>
-                                <a href="https://www.facebook.com/" target="_blank"><img src="assets/images/icons/icon-white-facebook.svg" alt="icon-white-facebook" /></a>
+                                <a href="https://www.facebook.com/" target="_blank">
+                                    <img src="assets/images/icons/icon-white-facebook.svg" alt="icon-white-facebook" /></a>
                             </li>
                             <li>
-                                <a href="https://www.twitter.com/" target="_blank"><img src="assets/images/icons/icon-white-twitter.svg" alt="icon-white-twitter" /></a>
+                                <a href="https://www.twitter.com/" target="_blank"><img
+                                        src="assets/images/icons/icon-white-twitter.svg" alt="icon-white-twitter" /></a>
                             </li>
                             <li>
-                                <a href="https://www.instagram.com/" target="_blank"><img src="assets/images/icons/icon-white-instagram.svg" alt="icon-white-instagram" /></a>
+                                <a href="https://www.instagram.com/" target="_blank"><img
+                                        src="assets/images/icons/icon-white-instagram.svg"
+                                        alt="icon-white-instagram" /></a>
                             </li>
                         </ul>
 
                         <div class="ed-header__action">
                             <div class="ed-header__cart">
-                                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#edSidebarCart" aria-controls="offcanvasRight" class="ed-topbar__action-icon">
+                                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#edSidebarCart"
+                                    aria-controls="offcanvasRight" class="ed-topbar__action-icon">
                                     <img src="assets/images/icons/icon-white-bag.svg" alt="icon-white-bag" />
                                     <span>3</span>
                                 </button>
@@ -105,7 +155,8 @@
 
                         <!-- Mobile Menu Button -->
                         <!--   -->
-                        <button type="button" class="mobile-menu-offcanvas-toggler" data-bs-toggle="modal" data-bs-target="#offcanvas-modal">
+                        <button type="button" class="mobile-menu-offcanvas-toggler" data-bs-toggle="modal"
+                            data-bs-target="#offcanvas-modal">
                             <span class="line"></span>
                             <span class="line"></span>
                             <span class="line"></span>
@@ -121,7 +172,8 @@
 
 
 <!-- Start Sidebar Cart -->
-<div class="offcanvas offcanvas-end ed-sidebar ed-sidebar-cart" tabindex="-1" id="edSidebarCart" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end ed-sidebar ed-sidebar-cart" tabindex="-1" id="edSidebarCart"
+    aria-labelledby="offcanvasRightLabel">
     <div class="ed-sidebar-header">
         <h3 class="ed-sidebar-header-title">Add to cart</h3>
         <button type="button" class="text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
@@ -186,3 +238,23 @@
     </div>
 </div>
 <!-- End Sidebar Cart -->
+
+<script>
+    // find trigger elements
+    const currencyBtn = document.getElementById("currencyBtn");
+    const currencyIcon = document.getElementById("currencyIcon");
+    const currencyText = document.getElementById("currencyText");
+
+    // handle clicks
+    document.querySelectorAll(".currency-option").forEach(option => {
+        option.addEventListener("click", function (e) {
+            e.preventDefault();
+            const newFlag = this.getAttribute("data-flag");
+            const newText = this.getAttribute("data-text");
+
+            // update button
+            currencyIcon.className = "flag-icon " + newFlag;
+            currencyText.textContent = newText;
+        });
+    });
+</script>
