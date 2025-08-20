@@ -673,9 +673,8 @@
                                             </table>
                                         </div>
 
-                                        <div
-                                            class="card-footer bg-white d-flex justify-content-between align-items-center">
-                                            <small class="text-muted">Showing 1–3 of 3</small>
+                                        <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                            <small class="text-muted">Showing 1-3 of 3</small>
                                             <div class="btn-group btn-group-sm">
                                                 <button class="btn btn-outline-secondary disabled">Prev</button>
                                                 <button class="btn btn-outline-secondary">Next</button>
@@ -715,7 +714,6 @@
                                                 <div class="modal-footer">
                                                     <button class="btn btn-outline-secondary btn-sm"
                                                         data-bs-dismiss="modal">Close</button>
-                                                    <button class="btn btn-primary btn-sm">Download Invoice</button>
                                                 </div>
                                             </div>
                                         </div>
