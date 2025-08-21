@@ -127,12 +127,6 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="card">
-                            <select class="form-select" style="outline: none; box-shadow: none;font-size: 0.85rem;border:1px solid #009f91;">
-                                <option>My Instructor Earnings</option>
-                                <option>My Affiliate Earnings</option>
-                            </select>
-                        </div>
-                        <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Total Revenue</h5>
                                 <div class="d-flex">

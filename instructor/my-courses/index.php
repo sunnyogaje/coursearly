@@ -531,14 +531,27 @@
                                                             <div class="col-md-3 m-t-30">
                                                                 <label class="form-label"><small>Currency</small></label>
                                                                 <select class="form-select" style="border:1px solid #009f91;outline: none; box-shadow: none;font-size: 0.85rem;">
-                                                                    <option>USD</option>
-                                                                    <option>NGN</option>
+                                                                    <option selected disabled>NGN</option>
                                                                 </select>
                                                             </div>
 
                                                             <!-- Price Tier Select -->
                                                             <div class="col-md-9 m-t-30">
-                                                                <label class="form-label"><small>Course Price (Max: 10,000) <i class="ti-info-alt" style="font-size: 13px;"></i></small></label>
+                                                                <label class="form-label"><small>Course Price</small></label>
+                                                                <input type="text" class="form-control" id="courseTitle" placeholder="Not more than 10,000" style="border:1px solid #009f91;outline: none; box-shadow: none;font-size: 0.85rem;">
+                                                    
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <!-- Currency Select -->
+                                                            <div class="col-md-3 m-t-10">
+                                                                <select class="form-select" style="border:1px solid #009f91;outline: none; box-shadow: none;font-size: 0.85rem;">
+                                                                    <option selected disabled>USD</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <!-- Price Tier Select -->
+                                                            <div class="col-md-9 m-t-10">
                                                                 <input type="text" class="form-control" id="courseTitle" placeholder="Not more than 10,000" style="border:1px solid #009f91;outline: none; box-shadow: none;font-size: 0.85rem;">
                                                     
                                                             </div>
