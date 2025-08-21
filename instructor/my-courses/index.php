@@ -394,6 +394,8 @@
                                     <option>Oldest</option>
                                     <option>A-Z</option>
                                     <option>Z-A</option>
+                                    <option>Free</option>
+                                    <option>Paid</option> 
                                     <option>Published</option>
                                     <option>Unpublished</option>
                                     <option>Pending Review</option>
